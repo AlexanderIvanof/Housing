@@ -23,8 +23,8 @@ public class RequestEntity {
     public RequestEntity() {
     }
 
-    public RequestEntity(int idRequest, GregorianCalendar requestDate, WorkType typeWork, String workScope, GregorianCalendar orderFullfillment, User user) {
-        this.idRequest = idRequest;
+    public RequestEntity(GregorianCalendar requestDate, WorkType typeWork, String workScope, GregorianCalendar orderFullfillment, User user) {
+        this.idRequest = 0;
         this.requestDate = requestDate;
         this.typeWork = typeWork;
         this.workScope = workScope;

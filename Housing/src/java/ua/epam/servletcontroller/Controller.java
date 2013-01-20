@@ -18,11 +18,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ua.epam.model.RequestAdd;
 import javax.servlet.http.HttpSession;
 /**
  *
  * @author Призрак
  */
+
 public class Controller extends HttpServlet {
 
     /**
@@ -41,6 +43,11 @@ public class Controller extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
+//            String command = request.getParameter("create");
+//            if(command.equalsIgnoreCase("cоздать заказ")){
+//                RequestAdd.addToMySQL(request, response);
+//            }
+            
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Controller</title>");            
