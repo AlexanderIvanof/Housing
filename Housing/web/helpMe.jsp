@@ -35,10 +35,13 @@
                 </tr>
                 <tr>
                     <td>Тип работ:</td>
-                    <td><select name="workType"><option selected value=2>выбор</option>
-                            <option value=1>покопать</option>
-                            <option value=2>посапать</option>
-                            <option value=3>покрасить стены</option>
+                    <td><select name="workType"><option selected value=2></option>
+                            <%
+                            for(WorkType wrktp: workTypes){
+                                out.println("<option value="+ wrktp.getIdWorkType() + ">"+ wrktp.getName() + "</option>");
+                            }
+                            
+                             %>
                         </select></td>
                 </tr>
                 <tr>
