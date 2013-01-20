@@ -73,23 +73,11 @@ public class Controller extends HttpServlet {
 
 		String url = request.getRequestURI(); 
 
-		String saveUserUrl = "saveUser.do" ;
+		String saveWorkTypeUrl = "saveWork.do" ;
 
-		String findUserUrl = "findUser.do" ;
+		if(url.endsWith(saveWorkTypeUrl)){
 
-		String addUserUrl = "addUser.do";
-
-		String delUserUrl = "delUser.do";
-
-		String authUser = "authUser.do";
-
-                String goOut = "goOut.do";
-
-		if(url.endsWith(authUser)){
-
-			System.out.println(" execute authentification ................... ");
-
-
+			System.out.println(" execute authentification ...... ");
 
 			String theName = request.getParameter("txtUserName");
 

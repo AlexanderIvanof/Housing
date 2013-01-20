@@ -15,7 +15,7 @@
 
         <h1>Заказать работы</h1>
 
-        <form method="GET" action="addUser.do" name="add">
+        <form method="GET" action="addWork.do" name="add">
             <table border="1" bgcolor="#CCCCFF">
 
                 <tr>
@@ -30,28 +30,32 @@
 
                 </tr>
                 <tr>
-                    <td>К какому времени желаете начать: </td>
-                    <td><input type="text" name="currentDate" value=""></input></td>
+                    <td>К какому времени желаете начать:</td>
+                    <td>
+                        <input type="text" name="currentDate"></input>
+                    </td>
                 </tr>
                 <tr>
                     <td>Тип работ:</td>
-                    <td><select name="workType"><option selected value=2></option>
+                    <td>
+                        <select name="workType"><option selected value=2></option>
                             <%
                             for(WorkType wrktp: workTypes){
                                 out.println("<option value="+ wrktp.getIdWorkType() + ">"+ wrktp.getName() + "</option>");
                             }
                             
                              %>
-                        </select></td>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
-                <tr>
-
+                    <td>Объем работ: </td>
+                    <td><input type="text" name="workScope"></input></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="создать заказ"> <input
-                            type="reset" value="Сбросить"> <input type="submit"
-                            value="Back"></td>
+                    <td><input type="submit" value="Cоздать заказ">
+                        <input type="reset" value="Сбросить">
+                        <input type="submit" value="Back"></td>
                 </tr>
             </table>
 
