@@ -78,8 +78,17 @@ public class Controller extends HttpServlet {
                 String addWork = "addWork.do" ; 
                 
                 String finishWork= "finishWork.do";
+                String authUser = "authUser.do";
+		if(url.endsWith(authUser)){
+			System.out.println(" execute authentification ................... ");
 
-		if(url.endsWith(saveWorkTypeUrl)){
+			String theName = request.getParameter("txtUserName");
+			System.out.println("!!!! name: " + theName);
+			String thePass = request.getParameter("txtUsrPwd");
+			System.out.println("!!!! password: " + thePass);
+
+
+		} if(url.endsWith(saveWorkTypeUrl)){
 
 			System.out.println(" execute authentification ...... ");
 
