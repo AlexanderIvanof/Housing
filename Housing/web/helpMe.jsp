@@ -15,7 +15,7 @@
 
         <h1>Заказать работы</h1>
 
-        <form method="GET" action="addWork.do" name="add">
+        <form method="POST" action="./Control">
             <table border="1" bgcolor="#CCCCFF">
 
                 <tr>
@@ -53,7 +53,7 @@
                     <td><input type="text" name="workScope"></input></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Cоздать заказ">
+                    <td><input type="submit" value="Создать заказ" name="create">
                         <input type="reset" value="Сбросить">
                         <input type="submit" value="Back"></td>
                 </tr>
