@@ -55,7 +55,7 @@
                 <tr>
                     <td><input type="submit" value="Создать заказ" name="create">
                         <input type="reset" value="Сбросить">
-                        <input type="submit" value="Back"></td>
+                        <input type="submit" value="Back" name="back"></td>
                 </tr>
             </table>
 

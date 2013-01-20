@@ -48,14 +48,14 @@ public class RequestAdd {
 
         RequestEntityDAO req = daof.getRequestEntityDAO();
         int check = req.insertRequest(newRequest);
-        if (check == 0) {
-//            try {
-//                request.getRequestDispatcher("./result.jspx").forward(request, response);
-//            } catch (ServletException ex) {
-//                System.out.println(ex.getMessage());
-//            } catch (IOException ex){
-//                System.out.println(ex.getMessage());
-//            }
+        if (check != 0) {
+            try {
+                request.getRequestDispatcher("./Home_page.html").forward(request, response);
+            } catch (ServletException ex) {
+                System.out.println(ex.getMessage());
+            } catch (IOException ex){
+                System.out.println(ex.getMessage());
+            }
         }
     }
 }
