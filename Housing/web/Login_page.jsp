@@ -59,17 +59,17 @@
 		</p>
 	
 		<p>
-			<font>User Name:&nbsp;&nbsp;&nbsp; </font>
+			<font>Имя пользователя:&nbsp;&nbsp;&nbsp; </font>
                         <input type="text" name="txtUserName" size="20">
 		</p>
 		<p>
-			<font>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>
+			<font>Пароль:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>
                         <input type="password" name="txtUsrPwd" size="20">&nbsp;
 		</p>
 		<p align="left">
 			
-			<input type="submit" value="OK" name="login">&nbsp;<input
-				type="button" value="Cancel" name="cancel" onClick="home()">
+			<input type="submit" value="Принять" name="login">&nbsp;<input
+				type="button" value="Отменить" name="cancel" onClick="home()">
 		</p>
 	</form>
 	<p>&nbsp;</p>
