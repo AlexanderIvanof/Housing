@@ -31,7 +31,7 @@
 		<hr>
 		<table border="0" width="100%" height="42">
 			<tr>
-				<td width="50%" height="36"><b><font size="5"><i>Добро пожаловать на страницу ЖК</i> </font> </b>
+				<td width="50%" height="36"><b><font size="5"><i>Добро пожаловать на страницу ЖЕК</i> </font> </b>
 				</td>
 				<td width="50%" height="36"></td>
 			</tr>
