@@ -43,11 +43,7 @@ public class Controller extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
-//            String command = request.getParameter("create");
-//            if(command.equalsIgnoreCase("cоздать заказ")){
-//                RequestAdd.addToMySQL(request, response);
-//            }
-            
+          
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Controller</title>");            
@@ -104,7 +100,7 @@ public class Controller extends HttpServlet {
 			System.out.println("!!!! name: " + theName);
 
 			String thePass = request.getParameter("txtUsrPwd");
-                        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$Controller talk");
+                        System.out.println("$$$Controller talk");
 
 			System.out.println("!!!! password: " + thePass);
                         
