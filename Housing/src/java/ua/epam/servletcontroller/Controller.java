@@ -74,6 +74,10 @@ public class Controller extends HttpServlet {
 		String url = request.getRequestURI(); 
 
 		String saveWorkTypeUrl = "saveWork.do" ;
+                
+                String addWork = "addWork.do" ; 
+                
+                String finishWork= "finishWork.do";
 
 		if(url.endsWith(saveWorkTypeUrl)){
 
@@ -86,7 +90,21 @@ public class Controller extends HttpServlet {
 			String thePass = request.getParameter("txtUsrPwd");
 
 			System.out.println("!!!! password: " + thePass);
-		} 
+                        
+		} if(url.endsWith(addWork)){
+                    
+                    String theWorkType = request.getParameter("workType");
+                    
+                    String theWorkDate = request.getParameter("workDate");
+                    
+                    String theWorkShare = request.getParameter("workShare");
+                    
+                    System.out.println("Controller talk" + theWorkType + theWorkDate + theWorkShare);
+                    
+                    
+                }   if(url.endsWith(finishWork)){ 
+                    
+                }
 		System.out.println(" getContextPath: " + request.getContextPath());
 
 
@@ -102,8 +120,6 @@ public class Controller extends HttpServlet {
 			for(String  str : param.getValue()){
 
 				System.out.println(" param value = "+str);
-
-
 
 			}
              }
