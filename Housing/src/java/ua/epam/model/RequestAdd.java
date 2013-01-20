@@ -21,6 +21,11 @@ import ua.epam.servlet.filter.UMConstants;
  */
 public class RequestAdd {
 
+    /**
+     *
+     * @param request
+     * @param response
+     */
     public static void addToMySQL(HttpServletRequest request, HttpServletResponse response) {
         String orderDate = request.getParameter("currentDate");
         Date oDate = Date.valueOf(orderDate);//
@@ -50,12 +55,27 @@ public class RequestAdd {
         int check = req.insertRequest(newRequest);
         if (check != 0) {
             try {
-                request.getRequestDispatcher("./Home_page.html").forward(request, response);
+                request.getRequestDispatcher("./WelcomePage.jsp").forward(request, response);
             } catch (ServletException ex) {
                 System.out.println(ex.getMessage());
             } catch (IOException ex){
                 System.out.println(ex.getMessage());
             }
         }
+    }
+    
+    /**
+     *
+     * @param request
+     * @param response
+     */
+    public static void goToHomePage(HttpServletRequest request, HttpServletResponse response){
+        try {
+                request.getRequestDispatcher("./WelcomePage.jsp").forward(request, response);
+            } catch (ServletException ex) {
+                System.out.println(ex.getMessage());
+            } catch (IOException ex){
+                System.out.println(ex.getMessage());
+            }
     }
 }

@@ -14,7 +14,7 @@
 </head>
 
 <body bgproperties="fixed" bgcolor="#CCCCFF">
-	<form name="auth" action="authUser.do" method="POST">
+	<form name="auth" action="WauthUser.do" method="POST">
 		<%@ page import="java.util.*"%>
 		<%@ page import="java.sql.*"%>
 		<%@ page import="java.text.*"%>
@@ -68,14 +68,14 @@
 		</p>
 		<p align="left">
 			
-			<input type="submit" value="Принять" name="login">&nbsp;<input
-				type="button" value="Отменить" name="cancel" onClick="home()">
+			<input type="submit" value="Принять" name="login">&nbsp;
+                        <input type="button" value="Отменить" name="cancel" onClick="home()">
 		</p>
 	</form>
 	<p>&nbsp;</p>
 	<script language="JavaScript">
 		function home() {
-			open("Home_page.html");
+			open("WelcomePage.jsp");
 		}
 	</script>
 </body>

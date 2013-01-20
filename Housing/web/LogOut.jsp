@@ -11,17 +11,15 @@
     </head>
     <body bgcolor="#CCCCFF">
 
-        <h1>Вы хотите выйти?</h1>
-        <form method="GET" action="goOut" name="outAuth">
+        <h1>Вы действительно хотите выйти?</h1>
+        <form method="POST" action="./LogOut">
 
             <hr>
-            <%
-                session.invalidate();
-            %>
             <td>
-                <input type="submit" value="Ok"> 
-                <input type="submit" value="Back">
+                <input type="submit" value="Ok" name="exit"> 
+                <input type="submit" value="Back" name="exit">
             </td>
+        </form>
 
     </body>
 </html>

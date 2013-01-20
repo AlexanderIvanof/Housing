@@ -12,14 +12,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import ua.epam.model.RequestAdd;
+import javax.servlet.http.HttpSession;
+import ua.epam.model.GoOut;
 
 /**
  *
  * @author Alexandr Ivanov
  */
-@WebServlet(name="Control", urlPatterns={"/Control"})
-public class Control extends HttpServlet {
+@WebServlet(name="LogOut", urlPatterns={"/LogOut"})
+public class LogOut extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,14 +32,14 @@ public class Control extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         String createCommand = request.getParameter("create");
-            if(createCommand != null){
-                RequestAdd.addToMySQL(request, response);
-            }
-            String backCommand = request.getParameter("back");
-            if(backCommand != null){
-                RequestAdd.goToHomePage(request, response);
-            }
+        String exit = request.getParameter("exit");
+        
+        if(exit.equalsIgnoreCase("Ok")){
+            GoOut.goOut(request, response);
+        }
+        if(exit.equalsIgnoreCase("Back")){
+            GoOut.goBack(request, response);
+        }
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -13,32 +13,46 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Начальная</title>
     </head>
-    <body>
+    <body bgproperties="fixed" bgcolor="#CCCCFF">
         <h1>Добро пожаловать на стартовую страницу!</h1>
         <h1>
-            Вы авторизовались как <>
+            Вы авторизовались как <b>
             <%
             String usr = (String) session.getAttribute(UMConstants.PRINCIPAL);
             DAOFactory daof = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 
             UserDAO user = daof.getUserDAO();
             User _usr = user.getUser(usr);
-            out.println(_usr.getFirstName() + " " + _usr.getLastName());
-            %>
+            out.println(_usr.getFirstName() + " " + _usr.getLastName() + ".");
+            %></b>
         </h1>
         <table border="2" width="100%">
             <tr>
-                <td width="50%">
+                <td align="center" width="50%">
                     <b><font size="4">
-                        <a href="./request.jsp">Сделать заявку.</a>
+                        <a href="./request.jsp">Создать заявку.</a>
                     </font></b>
                 </td>
-                <td width="50%"><b><font size="4">работникам ЖЕКа</font>
-                    </b>
+                <td align="center" width="50%">
+                    <b><font size="4">
+                        <a href="./listrequests.jsp">Просмотреть заявки.</a>
+                    </font></b>
                 </td>
             </tr>
         </table>
+        
+        <p align="right">
+            <font size="3">Для выхода нажмите</font> <input
+                type="button" value="Выход" name="btLogin" onClick="showLoginHtm()">
+        </p>
+        <p>&nbsp;</p>
+        <script language="JavaScript">
+            function showLoginHtm()
+            {
+                open("LogOut.jsp");
+            }
+        </script>
     </body>
 </html>

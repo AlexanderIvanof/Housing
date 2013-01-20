@@ -50,7 +50,7 @@ public class AuthFilter implements Filter {
 
                 if (auth != null) {
                     chain.doFilter(req, response);
-                    System.out.println("auth!==null   auth=<" + auth.toString() + ">");
+                    System.out.println(" auth=<" + auth.toString() + ">");
                 } else if (req.getServletPath() != null && req.getServletPath().endsWith(loginURI)) {
                     // client trying to login - let him do this
                     System.out.println("go to login page<" + loginURI + ">");
