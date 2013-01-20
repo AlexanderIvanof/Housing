@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 12.01.2013, 22:23:12
-    Author     : Призрак
+    Author     : Alexander Ivanon
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
