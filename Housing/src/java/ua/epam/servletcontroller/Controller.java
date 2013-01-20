@@ -88,6 +88,7 @@ public class Controller extends HttpServlet {
 			System.out.println("!!!! name: " + theName);
 
 			String thePass = request.getParameter("txtUsrPwd");
+                        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$Controller talk");
 
 			System.out.println("!!!! password: " + thePass);
                         
@@ -95,9 +96,9 @@ public class Controller extends HttpServlet {
                     
                     String theWorkType = request.getParameter("workType");
                     
-                    String theWorkDate = request.getParameter("workDate");
+                    String theWorkDate = request.getParameter("currentDate");
                     
-                    String theWorkShare = request.getParameter("workShare");
+                    String theWorkShare = request.getParameter("workScope");
                     
                     System.out.println("Controller talk" + theWorkType + theWorkDate + theWorkShare);
                     
