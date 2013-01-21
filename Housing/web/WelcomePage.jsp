@@ -7,6 +7,8 @@
 <%@page import="ua.epam.entitydao.*;"%>
 <%@page import="ua.epam.entity.*;"%>
 <%@page import="ua.epam.servlet.filter.UMConstants;"%>
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ResourceBundle;"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -16,9 +18,15 @@
         <title>Начальная</title>
     </head>
     <body bgproperties="fixed" bgcolor="#CCCCFF">
-        <h1>Добро пожаловать на стартовую страницу!</h1>
-        <h1>
-            Вы авторизовались как <b>
+        <%
+        Locale client = request.getLocale();
+        ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);
+        String welcome = bundle.getString("welcome.page.welcome");
+                
+        %>
+        <h1><%=bundle.getString("welcome.page.welcome")%></h1>
+        <h2>
+            <%=bundle.getString("welcome.page.loggin") %> <b>
             <%
             String usr = (String) session.getAttribute(UMConstants.PRINCIPAL);
             DAOFactory daof = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
@@ -27,25 +35,25 @@
             User _usr = user.getUser(usr);
             out.println(_usr.getFirstName() + " " + _usr.getLastName() + ".");
             %></b>
-        </h1>
+        </h2>
         <table border="2" width="100%">
             <tr>
                 <td align="center" width="50%">
                     <b><font size="4">
-                        <a href="./request.jsp">Создать заявку.</a>
+                        <a href="./request.jsp"><%=bundle.getString("welcome.page.create")%></a>
                     </font></b>
                 </td>
                 <td align="center" width="50%">
                     <b><font size="4">
-                        <a href="./listrequests.jsp">Просмотреть заявки.</a>
+                        <a href="./listrequests.jsp"><%=bundle.getString("welcome.page.show")%></a>
                     </font></b>
                 </td>
             </tr>
         </table>
         
         <p align="right">
-            <font size="3">Для выхода нажмите</font> <input
-                type="button" value="Выход" name="btLogin" onClick="showLoginHtm()">
+            <font size="3"><%=bundle.getString("welcome.page.exit")%></font> <input
+                type="button" value="<%=bundle.getString("welcome.page.button")%>" name="btLogin" onClick="showLoginHtm()">
         </p>
         <p>&nbsp;</p>
         <script language="JavaScript">

@@ -15,8 +15,9 @@ import ua.epam.entity.*;
 import ua.epam.entitydao.*;
 
 /**
- * @author e210976
- * @version 1.1
+ * This filter get access to start page.
+ *
+ * @author Alexandr Ivanov
  */
 public class AuthFilter implements Filter {
 
@@ -69,7 +70,7 @@ public class AuthFilter implements Filter {
 
                         MySQLAccessDAO nrm = new MySQLAccessDAO();
                         List<Access> all = nrm.getAllLoggins();
-//////////////////------------->>>>>>>>>>>>>>>>>						
+
                         String userNameFromBlank, password;
 
                         userNameFromBlank = request.getParameter("txtUserName");
@@ -84,7 +85,8 @@ public class AuthFilter implements Filter {
                             if ((acs.getUsername().equals(userNameFromBlank)) && (userNameFromBlank.length() != 0) && (password.length() != 0)) {
                                 if (acs.getPassword().equals(password)) {
                                     isPassMatch = true;
-                                    System.out.println("######AUTH_FILTER######### AUTHENTIFICATION SUCCESS");
+                                    System.out.println("######AUTH_FILTER######### "
+                                            + " AUTHENTIFICATION SUCCESS ");
                                     session.setAttribute(UMConstants.PRINCIPAL, acs.getUsername());
                                     break;
                                 } else {

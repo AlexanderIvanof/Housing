@@ -12,4 +12,6 @@ public interface RequestEntityDAO {
     int insertRequest(RequestEntity set);
     
     List<RequestEntity> getAllRequests();
+    
+    List<RequestEntity> getRequestsByUser(int userId);
 }

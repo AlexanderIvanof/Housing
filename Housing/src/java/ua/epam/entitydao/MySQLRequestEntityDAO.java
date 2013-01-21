@@ -123,4 +123,57 @@ public class MySQLRequestEntityDAO implements RequestEntityDAO {
         return generKey;
     }
 
+    @Override
+    public List<RequestEntity> getRequestsByUser(int userId) {
+        List<RequestEntity> myNew = new ArrayList<RequestEntity>();
+        Statement statement = null;
+        try {
+            accessConn = MySQLDAOFactory.createConnection();
+            statement = accessConn.createStatement();
+
+            ResultSet result = statement.executeQuery("Select * from request where userid = " + userId);
+            while(result.next()){
+               RequestEntity myReq = new RequestEntity();
+               myReq.setIdRequest(result.getInt("idrequest"));
+               myReq.setWorkScope(result.getString("work_scope"));
+               
+               Date requestDate = result.getDate("request_date");
+               Date orderDate = result.getDate("order_fulfillment");
+               int wrkType = result.getInt("work_type");
+               int user = result.getInt("userid");
+               
+               /* convert Date to GregorianCalendar */
+               GregorianCalendar greg = new GregorianCalendar();
+               greg.setTimeInMillis(requestDate.getTime());
+               myReq.setRequestDate(greg);
+               greg.setTimeInMillis(orderDate.getTime());
+               myReq.setOrderFullfillment(greg);
+               
+               MySQLUserDAO usrDAO = new MySQLUserDAO();
+               User usr = usrDAO.getUser(user);
+               myReq.setUser(usr);
+               
+               MySQLWorkTypeDAO workDAO = new MySQLWorkTypeDAO();
+               WorkType myWork = workDAO.getWorkType(wrkType);
+               myReq.setTypeWork(myWork);
+               
+               myNew.add(myReq);
+            }
+            
+            result.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } catch (NamingException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (accessConn != null) {
+                try {
+                    accessConn.close();
+                } catch (SQLException ex) {
+                }
+            }
+        }
+        return myNew;
+    }
+
 }
