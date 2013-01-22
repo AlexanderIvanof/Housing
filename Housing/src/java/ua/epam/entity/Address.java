@@ -1,7 +1,8 @@
 package ua.epam.entity;
 
 /**
- *
+ * Entity for DAO Address
+ * 
  * @author Ivanov Alexander
  */
 public class Address {
