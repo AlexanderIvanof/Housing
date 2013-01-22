@@ -6,7 +6,7 @@ import java.util.ListResourceBundle;
  *
  * @author Ivanov Alexander
  */
-public class WelcomePage_en_En extends ListResourceBundle {
+public class WelcomePage_en_GB extends ListResourceBundle {
 
     static final Object[][] contents = {
         {"welcome.page.welcome", "Welcome to our start page!"},

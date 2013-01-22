@@ -32,7 +32,7 @@
                 <tr>
                     <td>К какому времени желаете начать:</td>
                     <td>
-                        <input type="text" name="currentDate"></input>
+                        <input type="date" name="orderDate"></input>
                     </td>
                 </tr>
                 <tr>

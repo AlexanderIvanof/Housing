@@ -27,7 +27,7 @@ public class RequestAdd {
      * @param response
      */
     public static void addToMySQL(HttpServletRequest request, HttpServletResponse response) {
-        String orderDate = request.getParameter("currentDate");
+        String orderDate = request.getParameter("orderDate");
         Date oDate = Date.valueOf(orderDate);//
         GregorianCalendar _orderDate = new GregorianCalendar();
         _orderDate.setTimeInMillis(oDate.getTime());
