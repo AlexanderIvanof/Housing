@@ -20,10 +20,16 @@
     <body bgproperties="fixed" bgcolor="#CCCCFF">
         <%
         Locale client = request.getLocale();
-        ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);
-        String welcome = bundle.getString("welcome.page.welcome");
-                
+        ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);  
         %>
+        <table border="0" align="right">
+            <tr>
+                <td>
+                    <img src="<%=bundle.getString("welcome.page.flag")%>" width="75" heigth="50" />
+                </td>
+            </tr>
+        </table>
+                
         <h1><%=bundle.getString("welcome.page.welcome")%></h1>
         <h2>
             <%=bundle.getString("welcome.page.loggin") %> <b>

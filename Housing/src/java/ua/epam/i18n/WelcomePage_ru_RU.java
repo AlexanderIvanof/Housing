@@ -19,7 +19,9 @@ public class WelcomePage_ru_RU extends ListResourceBundle{
         {"welcome.page.create", "Создать заявку."},
         {"welcome.page.show", "Просмотреть заявки."},
         {"welcome.page.exit", "Для выхода нажмите "},
-        {"welcome.page.button", "Выход"}};
+        {"welcome.page.button", "Выход"},
+        {"welcome.page.flag", "images/flag_ru.gif"}};
+    
     @Override
     protected Object[][] getContents() {
         return contents;

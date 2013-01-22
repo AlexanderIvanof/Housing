@@ -14,7 +14,8 @@ public class WelcomePage_en_En extends ListResourceBundle {
         {"welcome.page.create", "Create request"},
         {"welcome.page.show", "Show my requests"},
         {"welcome.page.exit", "For exit push "},
-        {"welcome.page.button", "Exit"}};
+        {"welcome.page.button", "Exit"},
+        {"welcome.page.flag", "images/flag_GB.jpg"}};
 
     @Override
     protected Object[][] getContents() {
