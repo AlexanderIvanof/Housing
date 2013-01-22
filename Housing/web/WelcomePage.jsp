@@ -25,7 +25,7 @@
         <table border="0" align="right">
             <tr>
                 <td>
-                    <img src="<%=bundle.getString("welcome.page.flag")%>" width="75" heigth="50" />
+                    <img src="<%=bundle.getString("welcome.page.flag")%>"/>
                 </td>
             </tr>
         </table>

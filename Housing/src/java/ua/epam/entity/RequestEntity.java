@@ -116,7 +116,7 @@ public class RequestEntity {
         this.user = user;
     }
 
-    static String showDate(GregorianCalendar gcal) {
+    public static String showDate(GregorianCalendar gcal) {
         return " [" + gcal.get(Calendar.YEAR) + "/" + (gcal.get(Calendar.MONTH) + 1)
                 + "/" + gcal.get(Calendar.DAY_OF_MONTH) + "] ";
     }
