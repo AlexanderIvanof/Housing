@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8" errorPage="errorpage.jsp"%>
 
 <%@page  import="ua.epam.entitydao.*,ua.epam.servletcontroller.*" %>
 <%@page import="ua.epam.entity.*" %>
@@ -8,18 +8,20 @@
 <!DOCTYPE html >
 <html>
     <head>
+        <link rel="icon" href="images/favicon.ico" type="x-icon">
+        <link rel="shortcut icon" href="images/favicon.ico" type="x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Заказ работ</title>
     </head>
-    <body>
+    <body bgcolor="#7FFFD4">
 
         <h1>Заказать работы</h1>
 
         <form method="POST" action="./Control">
-            <table border="1" bgcolor="#CCCCFF">
+            <table border="1">
 
                 <tr>
-     
+
                     <%
                         DAOFactory daof = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
                         WorkTypeDAO typeDAO = daof.getWorkTypeDAO();
@@ -40,11 +42,11 @@
                     <td>
                         <select name="workType"><option selected value=2></option>
                             <%
-                            for(WorkType wrktp: workTypes){
-                                out.println("<option value="+ wrktp.getIdWorkType() + ">"+ wrktp.getName() + "</option>");
-                            }
-                            
-                             %>
+                                for (WorkType wrktp : workTypes) {
+                                    out.println("<option value=" + wrktp.getIdWorkType() + ">" + wrktp.getName() + "</option>");
+                                }
+
+                            %>
                         </select>
                     </td>
                 </tr>

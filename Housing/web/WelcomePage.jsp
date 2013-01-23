@@ -14,10 +14,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="images/favicon.ico" type="x-icon">
+        <link rel="shortcut icon" href="images/favicon.ico" type="x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Начальная</title>
     </head>
-    <body bgproperties="fixed" bgcolor="#CCCCFF">
+    <body bgproperties="fixed" bgcolor="#7FFFD4">
         <%
         Locale client = request.getLocale();
         ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);  
@@ -58,8 +60,8 @@
         </table>
         
         <p align="right">
-            <font size="3"><%=bundle.getString("welcome.page.exit")%></font> <input
-                type="button" value="<%=bundle.getString("welcome.page.button")%>" name="btLogin" onClick="showLoginHtm()">
+            <font size="3"><%=bundle.getString("welcome.page.exit")%></font>
+            <input type="button" value="<%=bundle.getString("welcome.page.button")%>" name="btLogin" onClick="showLoginHtm()">
         </p>
         <p>&nbsp;</p>
         <script language="JavaScript">

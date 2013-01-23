@@ -1,28 +1,15 @@
-<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" errorPage="errorpage.jsp"%>
 <%@ page import="java.util.*, ua.epam.servlet.filter.*, ua.epam.servletcontroller.*"%>
 <html>
     <head>
+        <link rel="icon" href="images/favicon.ico" type="x-icon">
+        <link rel="shortcut icon" href="images/favicon.ico" type="x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ЖЕК №81</title>
-        <style type="text/css">
-            /*<![CDATA[*/
-            body {
-                font-family: Arial, "Times New Roman", Times, serif;
-                margin: 10px 0px;
-            }
-        </style>
     </head>
 
-    <body bgproperties="fixed" bgcolor="#CCCCFF">
+    <body bgcolor="#7FFFD4">
         <form name="auth" action="WauthUser.do" method="POST">
-            <%@ page import="java.util.*"%>
-            <%@ page import="java.sql.*"%>
-            <%@ page import="java.text.*"%>
-            <%@ page import="java.sql.Date"%>
-            <%@ page language="java"%>
-            <%!int flag = 0;%>
-            <%!int ctr = 0;%>
-
             <p align="center"></p>
 
             <table>
@@ -31,14 +18,14 @@
                 <hr>
                 <table border="0" width="100%" height="42">
                     <tr>
-                        <td width="50%" height="36"><b><font face="monospace" size="5"><i>Добро пожаловать на страницу ЖЕК</i> </font> </b>
+                        <td width="60%" height="36"><b><font face="monospace" size="5"><i>Добро пожаловать на страницу ЖЕК</i> </font> </b>
                         </td>
-                        <td width="50%" height="36"></td>
+                        <td width="40%" height="36"></td>
                     </tr>
                     <tr>
-                        <td width="50%" height="36"><b><font face="monospace" size="5"><i>Для продолжения работы необходимо авторизоваться</i> </font> </b>
+                        <td width="60%" height="36"><b><font face="monospace" size="5"><i>Для продолжения работы необходимо авторизоваться</i> </font> </b>
                         </td>
-                        <td width="50%" height="36"></td>
+                        <td width="40%" height="36"></td>
                     </tr>
                 </table>
                 <p align="left">
@@ -57,7 +44,8 @@
                         }
                     %>
                 </p>
-
+                <jsp:include page="WhatsNew.jsp" flush="true"/>
+                <p></p>
                 <table border="0">
                     <tr>
                         <td align="right">

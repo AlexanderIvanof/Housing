@@ -1,15 +1,12 @@
-<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
-	
-<%@ page import="java.util.*,ua.epam.entitydao.*, ua.epam.servletcontroller.*, ua.epam.servlet.filter.*"%>
-
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" errorPage="errorpage.jsp"%>
 
 <!DOCTYPE html >
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Exiting from account</title>
+        <title>Подтверждение выхода</title>
     </head>
-    <body bgcolor="#CCCCFF">
+    <body bgcolor="#7FFFD4">
 
         <h1>Вы действительно хотите выйти?</h1>
         <form method="POST" action="./LogOut">
