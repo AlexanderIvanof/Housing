@@ -17,6 +17,7 @@
         <title>Диспетчер</title>
     </head>
     <body bgcolor="#7FFFD4">
+        <jsp:include page="locale.jsp" flush="true"/>
         <%
             sess = (Locale) session.getAttribute("language");
             if (sess != null) {
