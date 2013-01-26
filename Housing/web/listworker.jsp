@@ -8,15 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" href="/images/dispatch.ico" type="x-icon">
-        <link rel="shortcut icon" href="/images/dispatch.ico" type="x-icon">
+        <link rel="icon" href="images/dispatch.ico" type="x-icon">
+        <link rel="shortcut icon" href="images/dispatch.ico" type="x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <ol>
-            <li><jsp:include page="jazik.jsp" flush="true"/>
-        </ol>
+        
         <h1>Hello World!</h1>
     </body>
 </html>

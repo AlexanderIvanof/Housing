@@ -34,7 +34,9 @@
 //    DAOFactory daof = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 //    WorkerDAO wdao = daof.getWorkerDAO();
 //    Profession prof = new Profession("столяр");
-//    List<Worker> list = wdao.getWorkerByProfession(prof);
+//    List<Worker> list = wdao.getWorkerByProfession(prof);// по проффесии
+//    List<Worker> list1 = wdao.getAllWorkers();// все
+//    List<Worker> list2 = wdao.getWorkerByTeam(team);// по команде
 //    for(Worker wrk: list){
 //    out.println(wrk + "<br>");
 //       }
