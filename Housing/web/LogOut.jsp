@@ -3,6 +3,8 @@
 <!DOCTYPE html >
 <html>
     <head>
+        <link rel="icon" href="images/favicon.ico" type="x-icon">
+        <link rel="shortcut icon" href="images/favicon.ico" type="x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Подтверждение выхода</title>
     </head>

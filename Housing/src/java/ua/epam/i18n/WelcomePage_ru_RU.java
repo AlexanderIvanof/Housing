@@ -20,7 +20,14 @@ public class WelcomePage_ru_RU extends ListResourceBundle{
         {"welcome.page.show", "Просмотреть заявки."},
         {"welcome.page.exit", "Для выхода нажмите "},
         {"welcome.page.button", "Выход"},
-        {"welcome.page.flag", "images/flag_ru.gif"}};
+        {"welcome.page.flag", "images/flag_ru.gif"},
+        {"locale.page.choose", "Выберите язык"},
+        {"login.page.welcome", "Добро пожаловать на страницу ЖЕК"},
+        {"login.page.continue", "Для продолжения работы необходимо авторизоваться"},
+        {"login.page.username", "Имя пользователя:"},
+        {"login.page.password", "Пароль:"},
+        {"login.page.button.ok", "Принять"},
+        {"login.page.button.cancel", "Отменить"}};
     
     @Override
     protected Object[][] getContents() {

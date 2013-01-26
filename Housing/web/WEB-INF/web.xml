@@ -45,11 +45,11 @@
         </init-param>
         <init-param>
             <param-name>RedirectURL</param-name>
-            <param-value>WelcomePage.jsp</param-value>
+            <param-value>Dispatcher.jsp</param-value>
         </init-param>
         <init-param>
             <param-name>HomeURL</param-name>
-            <param-value>/WelcomePage.jsp</param-value>
+            <param-value>WelcomePage.jsp</param-value>
         </init-param>
     </filter>
     <filter-mapping>

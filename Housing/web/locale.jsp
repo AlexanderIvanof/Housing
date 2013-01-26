@@ -1,8 +1,7 @@
 <%-- 
-    Document   : index
-    Created on : 12.01.2013, 22:23:12
-    Author     : Alexander Ivanon
-    Hello
+    Document   : locale
+    Created on : 23.01.2013, 17:31:02
+    Author     : Alexandr Ivanov
 --%>
 
 <%@page import="java.util.Locale, java.util.ResourceBundle"%>
@@ -13,9 +12,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Выбор языка</title>
     </head>
-    <body>
+    <body bgcolor="#7FFFD4">
         <%
             sess = (Locale) session.getAttribute("language");
             if (sess != null) {
@@ -26,7 +25,14 @@
 
             ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);
         %>
-        <h1><b><%=bundle.getString("locale.page.choose")%></b></h1>
-        <jsp:include page="locale.jsp" flush="true"/>
+        <form action="./LangChange" method="GET">
+            <table align="center">
+                <tr>
+                    <td><%=bundle.getString("locale.page.choose")%></td>
+                    <td><input type="image" src="images/flag_GB.jpg" name="lang" value="GB"/></td>
+                    <td><input type="image" src="images/flag_ru.gif" name="lang" value="RU"/></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>

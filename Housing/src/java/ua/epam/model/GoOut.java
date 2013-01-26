@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import ua.epam.entity.UserType;
+import ua.epam.servlet.filter.UMConstants;
 
 /**
  *
@@ -20,7 +22,7 @@ public class GoOut {
         HttpSession session = request.getSession(true);
             session.invalidate();
             try {
-                request.getRequestDispatcher("./Login_page.jsp").forward(request, response);
+                request.getRequestDispatcher("Login_page.jsp").forward(request, response);
             } catch (ServletException ex) {
                 System.out.println(ex.getMessage());
             } catch (IOException ex){
@@ -30,7 +32,13 @@ public class GoOut {
     
     public static void goBack(HttpServletRequest request, HttpServletResponse response){
         try {
-                request.getRequestDispatcher("./WelcomePage.jsp").forward(request, response);
+            HttpSession sess = request.getSession(true);
+            UserType user = (UserType)sess.getAttribute(UMConstants.USER_TYPE);
+            if(user == UserType.ADMINISTRATOR){
+                request.getRequestDispatcher("Dispatcher.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
+            }
             } catch (ServletException ex) {
                 System.out.println(ex.getMessage());
             } catch (IOException ex){

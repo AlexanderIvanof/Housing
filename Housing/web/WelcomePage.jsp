@@ -10,6 +10,8 @@
 <%@page import="java.util.Locale"%>
 <%@page import="java.util.ResourceBundle;"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%!Locale client;%>
+<%!Locale sess;%>
 
 <!DOCTYPE html>
 <html>
@@ -20,8 +22,14 @@
         <title>Начальная</title>
     </head>
     <body bgproperties="fixed" bgcolor="#7FFFD4">
-        <%
-        Locale client = request.getLocale();
+        <jsp:include page="locale.jsp" flush="true"/>
+       <%
+            sess = (Locale) session.getAttribute("language");
+            if (sess != null) {
+                client = sess;
+            } else {
+                client = request.getLocale();
+            }
         ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);  
         %>
         <table border="0" align="right">
@@ -48,12 +56,12 @@
             <tr>
                 <td align="center" width="50%">
                     <b><font size="4">
-                        <a href="./request.jsp"><%=bundle.getString("welcome.page.create")%></a>
+                        <a href="request.jsp"><%=bundle.getString("welcome.page.create")%></a>
                     </font></b>
                 </td>
                 <td align="center" width="50%">
                     <b><font size="4">
-                        <a href="./listrequests.jsp"><%=bundle.getString("welcome.page.show")%></a>
+                        <a href="listrequests.jsp"><%=bundle.getString("welcome.page.show")%></a>
                     </font></b>
                 </td>
             </tr>

@@ -26,6 +26,7 @@ public class LoggingFilter implements Filter {
 
         //Log the IP address and current timestamp + username.
         System.out.println(">>>>>>>>>>>>>>>> IP=<" + ipAddress + "> URL=<" + URL + ">, user=<" + userName + ">, on time " + new Date().toString());
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + request.getRequestURI() + " sdfsdfdsfdsf");
         chain.doFilter(req, res);
     }
 

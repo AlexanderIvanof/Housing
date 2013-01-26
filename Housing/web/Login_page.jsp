@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8" errorPage="errorpage.jsp"%>
 <%@ page import="java.util.*, ua.epam.servlet.filter.*, ua.epam.servletcontroller.*"%>
+<%@page import="java.util.Locale, java.util.ResourceBundle"%>
+<%!Locale client;%>
+<%!Locale sess;%>
 <html>
     <head>
         <link rel="icon" href="images/favicon.ico" type="x-icon">
@@ -9,6 +12,16 @@
     </head>
 
     <body bgcolor="#7FFFD4">
+        <%
+            sess = (Locale) session.getAttribute("language");
+            if (sess != null) {
+                client = sess;
+            } else {
+                client = request.getLocale();
+            }
+
+            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);
+        %>
         <form name="auth" action="WauthUser.do" method="POST">
             <p align="center"></p>
 
@@ -18,12 +31,12 @@
                 <hr>
                 <table border="0" width="100%" height="42">
                     <tr>
-                        <td width="60%" height="36"><b><font face="monospace" size="5"><i>Добро пожаловать на страницу ЖЕК</i> </font> </b>
+                        <td width="60%" height="36"><b><font face="monospace" size="5"><i><%=bundle.getString("login.page.welcome")%></i> </font> </b>
                         </td>
                         <td width="40%" height="36"></td>
                     </tr>
                     <tr>
-                        <td width="60%" height="36"><b><font face="monospace" size="5"><i>Для продолжения работы необходимо авторизоваться</i> </font> </b>
+                        <td width="60%" height="36"><b><font face="monospace" size="5"><i><%=bundle.getString("login.page.continue")%></i> </font> </b>
                         </td>
                         <td width="40%" height="36"></td>
                     </tr>
@@ -49,7 +62,7 @@
                 <table border="0">
                     <tr>
                         <td align="right">
-                            <font face="monospace"><b>Имя пользователя:</b></font>
+                            <font face="monospace"><b><%=bundle.getString("login.page.username")%></b></font>
                         </td>
                         <td>
                             <input type="text" name="txtUserName" size="20">
@@ -57,7 +70,7 @@
                     </tr>
                     <tr>
                         <td align="right">
-                            <font face="monospace"><b>Пароль</b></font>
+                            <font face="monospace"><b><%=bundle.getString("login.page.password")%></b></font>
                         </td>
                         <td>
                             <input type="password" name="txtUsrPwd" size="20">
@@ -66,17 +79,11 @@
                     <tr align="left">
                         <td></td>
                         <td align="right">
-                            <input type="submit" value="Принять" name="login">&nbsp;
-                            <input type="button" value="Отменить" name="cancel" onClick="home()">
+                            <input type="submit" value="<%=bundle.getString("login.page.button.ok")%>" name="login">&nbsp;
+                            <input type="button" value="<%=bundle.getString("login.page.button.cancel")%>" name="cancel"/>
                         </td>
                     </tr>
                 </table>
         </form>
-        <p>&nbsp;</p>
-        <script language="JavaScript">
-            function home() {
-                open("WelcomePage.jsp");
-            }
-        </script>
     </body>
 </html>

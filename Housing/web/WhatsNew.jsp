@@ -11,17 +11,15 @@
 
         <center>
             <table BORDER=5">
-                <tr><th class="TITLE">
-                        Последние новости</table>
+                <tr><th class="TITLE">Информационные страницы
+           </table>
         </center>
         <p>
 
             <b>Самые популярные новости:</b>
         <ol>
-            <li><jsp:include page="news/Item1.html" flush="true"/>
-            <li><jsp:include page="news/Item2.html" flush="true"/>
-            <li><jsp:include page="news/Item3.html" flush="true"/>
-            <li><jsp:include page="news/Item4.html" flush="true"/>
+            <li><jsp:include page="news/kievhousing.jsp" flush="true"/>
+            <li><jsp:include page="news/workinhousing.jsp" flush="true"/>
         </ol>
     </body>
 </html> 

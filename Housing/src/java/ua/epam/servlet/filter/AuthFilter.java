@@ -47,17 +47,18 @@ public class AuthFilter implements Filter {
                 HttpServletRequest req = (HttpServletRequest) request;
                 HttpSession session = req.getSession(true);
                 Object auth = session.getAttribute(UMConstants.PRINCIPAL);
+                UserType uType = (UserType)session.getAttribute(UMConstants.USER_TYPE);
 
 
                 if (auth != null) {
                     chain.doFilter(req, response);
-                    System.out.println(" auth=<" + auth.toString() + ">");
+                    System.out.println("===Authorized user =<" + auth.toString() + "> type <"+uType.toString()+">===");
                 } else if (req.getServletPath() != null && req.getServletPath().endsWith(loginURI)) {
                     // client trying to login - let him do this
                     System.out.println("go to login page<" + loginURI + ">");
                     chain.doFilter(request, response);
 
-                } else if (req.getServletPath() != null && req.getServletPath().endsWith("goOut")) {
+                } else if (req.getServletPath() != null && req.getServletPath().endsWith("Out")) {
 
                     RequestDispatcher rd = request.getRequestDispatcher(loginURI);
                     rd.forward(request, response);
@@ -74,7 +75,7 @@ public class AuthFilter implements Filter {
                         String userNameFromBlank, password;
 
                         userNameFromBlank = request.getParameter("txtUserName");
-                        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!! userNameFromBlank <" + userNameFromBlank + ">");
+                        System.out.println("========= Entered username is <" + userNameFromBlank + ">=======");
                         password = request.getParameter("txtUsrPwd");
                         password = password.trim();
                         userNameFromBlank = userNameFromBlank.trim();
@@ -86,8 +87,9 @@ public class AuthFilter implements Filter {
                                 if (acs.getPassword().equals(password)) {
                                     isPassMatch = true;
                                     System.out.println("######AUTH_FILTER######### "
-                                            + " AUTHENTIFICATION SUCCESS ");
+                                            + "\n AUTHENTIFICATION SUCCESS ");
                                     session.setAttribute(UMConstants.PRINCIPAL, acs.getUsername());
+                                    session.setAttribute(UMConstants.USER_TYPE, acs.getUserType());
                                     break;
                                 } else {
                                     System.out.print(".");
@@ -99,16 +101,26 @@ public class AuthFilter implements Filter {
 
                         if (isPassMatch) {
                             System.out.println(">>>>>>>> LOGIN");
-                            RequestDispatcher rd = request.getRequestDispatcher(homeURL);
+                            RequestDispatcher rd = null;
+                            UserType type = (UserType) session.getAttribute(UMConstants.USER_TYPE);
+                            if (type == UserType.USER) {
+                                rd = request.getRequestDispatcher(homeURL);
+                            }
+                            if (type == UserType.ADMINISTRATOR) {
+                                rd = request.getRequestDispatcher(redirectURL);
+                            }
                             request.removeAttribute(UMConstants.ERRORMESSAGE);
-                            rd.forward(request, response);
+                            if (rd != null) {
+                                rd.forward(request, response);
+                            }
 
                         } else {
                             //((HttpServletResponse)response).sendRedirect("http://localhost:8888/usrmgr/Login_page.jsp");
                             RequestDispatcher rd = request.getRequestDispatcher(loginURI);
                             request.setAttribute(UMConstants.ERRORMESSAGE, stringFatal);
                             rd.forward(request, response);
-                            System.out.println("######AUTH_FILTER######### WRONG USER NAME OR PASSWORD");
+                            System.out.println("######AUTH_FILTER######### "
+                                    + " WRONG USER NAME OR PASSWORD");
 
                         }
                     } catch (Exception e) {
