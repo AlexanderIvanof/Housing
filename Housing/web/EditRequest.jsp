@@ -7,6 +7,10 @@
 <%@page import="java.util.List"%>
 <%@page import="ua.epam.entity.*, ua.epam.entitydao.*;"%> 
 <%@page contentType="text/html" pageEncoding="UTF-8" errorPage="errorpage.jsp"%>
+<%@page  import="ua.epam.entitydao.*,ua.epam.servletcontroller.*" %>
+<%@page import="ua.epam.entity.*" %>
+
+<%!  RequestEntity currentRequest; %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,44 +21,40 @@
     </head>
     <body>
         <h1>List request</h1><%
+        String idReques = request.getParameter("idRequest");
         DAOFactory daof = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
         RequestEntityDAO requests = daof.getRequestEntityDAO();
-
-        String _user = (String) session.getAttribute(UMConstants.PRINCIPAL);
-        
         List<RequestEntity> list = requests.getAllRequests();
+        for(RequestEntity req : list){
+            
+            int i = Integer.getInteger(idReques);
+            if(req.getIdRequest() == i){
+                currentRequest = req;
+                break;
+            }
+        }
     %>
 
-    
-    <tr><td> name of user </td><td> user group </td><td> department </td><td>Edit user</td><td>Delete user</td></tr>
     <table align="center" border="2" width="60%"
            <tr>
             <td align="center" width="20%"><font>Номер заказа</font></td>
-            <td align="center" width="20%"><font>Адрес</font></td>
-            <td align="center" width="20%"><font>Дата заказа</font></td>
-            <td align="center" width="20%"><font>Наименование работ</font></td>
-            <td align="center" width="20%"><font>Объем работ</font></td>
-            <td align="center" width="20%"><font>К какой дате завершить</font></td>
-            <td align="center" width="20%"><font>Редактировать</font></td>
-        </tr>
-        <%
-            if (!list.isEmpty()) {
-                for (RequestEntity requ : list) {
-                    out.println("<tr>");
-                    out.println("<td>" + requ.getIdRequest() + "</td>");
-                    out.println("<td>" + requ.getUser().getAddress() + "</td>");
-                    out.println("<td>" + RequestEntity.showDate(requ.getRequestDate()) + "</td>");
-                    out.println("<td>" + requ.getTypeWork().getName() + "</td>");
-                    out.println("<td>" + requ.getWorkScope() + "</td>");
-                    out.println("<td>" + RequestEntity.showDate(requ.getOrderFullfillment()) + "</td>");
-                    out.println("<td>"+"<a href=\"EditRequest.jsp" + "\">Edit</a></td>>"+"</td>");
-                    out.println("</tr>");
-                }
-            } else {
-                out.println("<tr>");
-                out.println("<td>Заказов нет!</td>");
-                out.println("</tr>");
-            }
-        %>
+           </tr>
+         <tr>
+                    <td>Тип работ:</td>
+                    <%
+                    currentRequest.getTypeWork();
+                    %>
+                    
+                    <td>
+                        <select name="workType"><option selected value=2></option>
+                            <%
+                                for (WorkType wrktp : workTypes) {
+                                    out.println("<option value=" + wrktp.getIdWorkType() + ">" + wrktp.getName() + "</option>");
+                                }
+
+                            %>
+                        </select>
+                    </td>
+                </tr>
     </body>
 </html>
