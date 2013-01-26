@@ -14,7 +14,7 @@
         <link rel="icon" href="/images/dispatch.ico" type="x-icon">
         <link rel="shortcut icon" href="/images/dispatch.ico" type="x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Диспетчер</title>
+        <title>Диспетчер page</title>
     </head>
     <body bgcolor="#7FFFD4">
         <jsp:include page="locale.jsp" flush="true"/>
