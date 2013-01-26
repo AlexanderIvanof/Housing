@@ -59,6 +59,18 @@ public class MySQLRequestEntityDAO implements RequestEntityDAO {
                WorkType myWork = workDAO.getWorkType(wrkType);
                myReq.setTypeWork(myWork);
                
+               Approve app = Approve.EMPTY;
+               String approve = result.getString("approved");
+               if(approve.equalsIgnoreCase("wait app")){
+                   myReq.setApprove(Approve.WAIT_APPROVE);
+               }
+               if(approve.equalsIgnoreCase("approve")){
+                   myReq.setApprove(Approve.APPROVE);
+               }
+               if(approve.equalsIgnoreCase("not approve")){
+                   myReq.setApprove(Approve.COULD_NOT_BE);
+               }
+                   
                myNew.add(myReq);
             }
             
@@ -156,6 +168,18 @@ public class MySQLRequestEntityDAO implements RequestEntityDAO {
                MySQLWorkTypeDAO workDAO = new MySQLWorkTypeDAO();
                WorkType myWork = workDAO.getWorkType(wrkType);
                myReq.setTypeWork(myWork);
+               
+               Approve app = Approve.EMPTY;
+               String approve = result.getString("approved");
+               if(approve.equalsIgnoreCase("wait app")){
+                   myReq.setApprove(Approve.WAIT_APPROVE);
+               }
+               if(approve.equalsIgnoreCase("approve")){
+                   myReq.setApprove(Approve.APPROVE);
+               }
+               if(approve.equalsIgnoreCase("not approve")){
+                   myReq.setApprove(Approve.COULD_NOT_BE);
+               }
                
                myNew.add(myReq);
             }

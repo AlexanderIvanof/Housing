@@ -5,6 +5,7 @@
 package ua.epam.entitydao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -40,8 +41,11 @@ public class MySQLWorkerDAO implements WorkerDAO {
 
             myNew.setIdworker(idworker);
             myNew.setFirstName(result.getString("first_name"));
-            myNew.setFirstName(result.getString("second_name"));
+            myNew.setLastName(result.getString("last_name"));
+            myNew.setTeam(result.getInt("team"));
+            myNew.setBusy(result.getBoolean("busy"));
             int _profession = result.getInt("profession");
+            
 
             /* get Profession in DAO */
             MySQLProfessionDAO profDAO = new MySQLProfessionDAO();
@@ -79,7 +83,9 @@ public class MySQLWorkerDAO implements WorkerDAO {
 
             myNew.setIdworker(result.getInt("idworker"));
             myNew.setFirstName(result.getString("first_name"));
-            myNew.setFirstName(result.getString("second_name"));
+            myNew.setLastName(result.getString("last_name"));
+            myNew.setTeam(result.getInt("team"));
+            myNew.setBusy(result.getBoolean("busy"));
             int _profession = result.getInt("profession");
 
             /* get Profession in DAO */
@@ -116,7 +122,9 @@ public class MySQLWorkerDAO implements WorkerDAO {
                 Worker _wrkr = new Worker();
                 _wrkr.setIdworker(result.getInt("idworker"));
                 _wrkr.setFirstName(result.getString("first_name"));
-                _wrkr.setFirstName(result.getString("second_name"));
+                _wrkr.setLastName(result.getString("last_name"));
+                _wrkr.setTeam(result.getInt("team"));
+                _wrkr.setBusy(result.getBoolean("busy"));
                 int _profession = result.getInt("profession");
 
                 /* get Profession in DAO */
@@ -155,13 +163,16 @@ public class MySQLWorkerDAO implements WorkerDAO {
             ResultSet res = statement.executeQuery("Select * from profession where nameprof = '" + prof.getNameprof() + "'");
             res.next();
             int prfs = res.getInt("idprofession");
+            res.close();
 
             ResultSet result = statement.executeQuery("Select * from workers where profession = " + prfs);
             while (result.next()) {
                 Worker _wrkr = new Worker();
                 _wrkr.setIdworker(result.getInt("idworker"));
                 _wrkr.setFirstName(result.getString("first_name"));
-                _wrkr.setFirstName(result.getString("second_name"));
+                _wrkr.setLastName(result.getString("last_name"));
+                _wrkr.setTeam(result.getInt("team"));
+                _wrkr.setBusy(result.getBoolean("busy"));
                 _wrkr.setProf(prof);
 
                 allWorkers.add(_wrkr);
@@ -177,10 +188,101 @@ public class MySQLWorkerDAO implements WorkerDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
 
         return allWorkers;
+    }
+
+    @Override
+    public List<Worker> getWorkerByTeam(int team) {
+        Statement statement = null;
+        List<Worker> allWorkers = new ArrayList<Worker>();
+        try {
+            accessConn = MySQLDAOFactory.createConnection();
+            statement = accessConn.createStatement();
+
+            ResultSet result = statement.executeQuery("Select * from workers where team = " + team);
+            while (result.next()) {
+                Worker _wrkr = new Worker();
+                _wrkr.setIdworker(result.getInt("idworker"));
+                _wrkr.setFirstName(result.getString("first_name"));
+                _wrkr.setLastName(result.getString("last_name"));
+                _wrkr.setTeam(team);
+                _wrkr.setBusy(result.getBoolean("busy"));
+                int _profession = result.getInt("profession");
+
+                /* get Profession in DAO */
+                MySQLProfessionDAO profDAO = new MySQLProfessionDAO();
+                Profession _prof = profDAO.getProfession(_profession);
+                _wrkr.setProf(_prof);
+                
+
+                allWorkers.add(_wrkr);
+
+            }
+            result.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } catch (NamingException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (accessConn != null) {
+                try {
+                    accessConn.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+
+        return allWorkers;
+    }
+
+    @Override
+    public void setWorkerBusy(int idworker, boolean busy) {
+        try{
+            accessConn = MySQLDAOFactory.createConnection();
+            PreparedStatement query = accessConn.prepareStatement("Update workers set busy = ? where idworker = " + idworker);
+            query.setBoolean(1, busy);
+            query.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }catch(NamingException ex){
+            System.out.println(ex.getMessage());
+        } finally {
+            if (accessConn != null) {
+                try {
+                    accessConn.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+         
+    }
+
+    @Override
+    public void setWorkTeam(int idworker, int teamNumber) {
+                try{
+            accessConn = MySQLDAOFactory.createConnection();
+            PreparedStatement query = accessConn.prepareStatement("Update workers set team = ? where idworker = " + idworker);
+            query.setInt(1, teamNumber);
+            query.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }catch(NamingException ex){
+            System.out.println(ex.getMessage());
+        } finally {
+            if (accessConn != null) {
+                try {
+                    accessConn.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
     }
 }

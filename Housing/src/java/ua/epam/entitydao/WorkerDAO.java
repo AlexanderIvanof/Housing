@@ -18,4 +18,10 @@ public interface WorkerDAO {
     List<Worker> getAllWorkers();
 
     List<Worker> getWorkerByProfession(Profession prof);
+    
+    List<Worker> getWorkerByTeam(int team);
+    
+    void setWorkerBusy(int idworker, boolean busy);
+    
+    void setWorkTeam(int idworker, int teamNumber);
 }

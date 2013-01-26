@@ -4,27 +4,38 @@
     Author     : Alexandr Ivanov
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="ua.epam.entitydao.WorkerDAO"%>
+<%@page import="ua.epam.entitydao.DAOFactory, ua.epam.entity.*"%>
 <%@page import="java.util.Locale, java.util.ResourceBundle"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%!Locale client;%>
 <%!Locale sess;%>
 
-        <%
-            sess = (Locale) session.getAttribute("language");
-            if (sess != null) {
-                client = sess;
-            } else {
-                client = request.getLocale();
-            }
+<%
+    sess = (Locale) session.getAttribute("language");
+    if (sess != null) {
+        client = sess;
+    } else {
+        client = request.getLocale();
+    }
 
-            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);
-        %>
-        <form action="./LangChange" method="GET">
-            <table align="center">
-                <tr>
-                    <td><%=bundle.getString("locale.page.choose")%></td>
-                    <td><input type="image" src="images/flag_GB.jpg" name="lang" value="GB"/></td>
-                    <td><input type="image" src="images/flag_ru.gif" name="lang" value="RU"/></td>
-                </tr>
-            </table>
-        </form>
+    ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);
+%>
+
+<table align="center">
+    <tr>
+        <td><%=bundle.getString("locale.page.choose")%></td>
+        <td><image src="images/flag_GB.jpg" width="150" height="100"/></td>
+        <td><image src="images/flag_ru.gif" width="150" height="100"/></td>
+    </tr>
+</table>
+<%
+//    DAOFactory daof = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+//    WorkerDAO wdao = daof.getWorkerDAO();
+//    Profession prof = new Profession("столяр");
+//    List<Worker> list = wdao.getWorkerByProfession(prof);
+//    for(Worker wrk: list){
+//    out.println(wrk + "<br>");
+//       }
+%>

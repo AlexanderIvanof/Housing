@@ -19,6 +19,7 @@ public class RequestEntity {
     private String workScope;
     private GregorianCalendar orderFullfillment;
     private User user;
+    private Approve approve;
 
     public RequestEntity() {
     }
@@ -30,6 +31,7 @@ public class RequestEntity {
         this.workScope = workScope;
         this.orderFullfillment = orderFullfillment;
         this.user = user;
+        this.approve = Approve.WAIT_APPROVE;
     }
 
     /**
@@ -126,5 +128,19 @@ public class RequestEntity {
         return "Request id = " + idRequest + " request date:" + showDate(requestDate)
                 + "<br> --> " + user + "<br> --> |" + typeWork + "| -- |"
                 + workScope + "| -- |" + showDate(orderFullfillment) + "|; ";
+    }
+
+    /**
+     * @return the approve
+     */
+    public Approve getApprove() {
+        return approve;
+    }
+
+    /**
+     * @param approve the approve to set
+     */
+    public void setApprove(Approve approve) {
+        this.approve = approve;
     }
 }
