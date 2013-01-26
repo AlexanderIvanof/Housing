@@ -24,7 +24,9 @@
         
         List<RequestEntity> list = requests.getAllRequests();
     %>
-   
+
+    
+    <tr><td> name of user </td><td> user group </td><td> department </td><td>Edit user</td><td>Delete user</td></tr>
     <table align="center" border="2" width="60%"
            <tr>
             <td align="center" width="20%"><font>Номер заказа</font></td>
@@ -45,7 +47,7 @@
                     out.println("<td>" + requ.getTypeWork().getName() + "</td>");
                     out.println("<td>" + requ.getWorkScope() + "</td>");
                     out.println("<td>" + RequestEntity.showDate(requ.getOrderFullfillment()) + "</td>");
-                    out.println("<td>"+"<a href=\"EditRequest.jsp?idRequest="+ requ.getIdRequest() + "\">Edit</a></td>>"+"</td>");
+                    out.println("<td>"+"<a href=\"EditRequest.jsp" + "\">Edit</a></td>>"+"</td>");
                     out.println("</tr>");
                 }
             } else {
