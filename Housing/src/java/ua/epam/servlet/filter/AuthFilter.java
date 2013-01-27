@@ -1,6 +1,7 @@
 package ua.epam.servlet.filter;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -44,8 +45,11 @@ public class AuthFilter implements Filter {
             String stringFatal = "Wrong user name or password";
 
             if (request instanceof HttpServletRequest) {
+                
                 HttpServletRequest req = (HttpServletRequest) request;
                 HttpSession session = req.getSession(true);
+                req.setAttribute("curTime", new Date() );
+                req.setAttribute("curTimeMillis", System.currentTimeMillis() );
                 Object auth = session.getAttribute(UMConstants.PRINCIPAL);
                 UserType uType = (UserType)session.getAttribute(UMConstants.USER_TYPE);
 

@@ -5,6 +5,34 @@
         <welcome-file>Login_page.jsp</welcome-file>
     </welcome-file-list>
     
+    <taglib>
+        <taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+        <taglib-location>/WEB-INF/fmt.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://java.sun.com/jstl/fmt-rt</taglib-uri>
+        <taglib-location>/WEB-INF/fmt-rt.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+        <taglib-location>/WEB-INF/c.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://java.sun.com/jstl/core-rt</taglib-uri>
+        <taglib-location>/WEB-INF/c-rt.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+        <taglib-location>/WEB-INF/x.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://java.sun.com/jstl/x-rt</taglib-uri>
+        <taglib-location>/WEB-INF/x-rt.tld</taglib-location>
+    </taglib>   
+   <taglib>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <taglib>
+    <taglib-uri>/tlt</taglib-uri>
+    <taglib-location>/WEB-INF/taglib.tld</taglib-location>
+  </taglib>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
     <!--<servlet>
         <description></description>
         <display-name>Controller</display-name>
@@ -36,6 +64,7 @@
         <filter-name>LoggingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>ua.epam.servlet.filter.AuthFilter</filter-class>
@@ -56,7 +85,7 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-     
+        
     
     <session-config>
         <session-timeout>
