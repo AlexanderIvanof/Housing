@@ -4,47 +4,7 @@
     <welcome-file-list>
         <welcome-file>Login_page.jsp</welcome-file>
     </welcome-file-list>
-    
-    <taglib>
-        <taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
-        <taglib-location>/WEB-INF/fmt.tld</taglib-location>
-    </taglib>
-    <taglib>
-        <taglib-uri>http://java.sun.com/jstl/fmt-rt</taglib-uri>
-        <taglib-location>/WEB-INF/fmt-rt.tld</taglib-location>
-    </taglib>
-    <taglib>
-        <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
-        <taglib-location>/WEB-INF/c.tld</taglib-location>
-    </taglib>
-    <taglib>
-        <taglib-uri>http://java.sun.com/jstl/core-rt</taglib-uri>
-        <taglib-location>/WEB-INF/c-rt.tld</taglib-location>
-    </taglib>
-    <taglib>
-        <taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
-        <taglib-location>/WEB-INF/x.tld</taglib-location>
-    </taglib>
-    <taglib>
-        <taglib-uri>http://java.sun.com/jstl/x-rt</taglib-uri>
-        <taglib-location>/WEB-INF/x-rt.tld</taglib-location>
-    </taglib>   
-   <taglib>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <taglib>
-    <taglib-uri>/tlt</taglib-uri>
-    <taglib-location>/WEB-INF/taglib.tld</taglib-location>
-  </taglib>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    <!--<servlet>
-        <description></description>
-        <display-name>Controller</display-name>
-        <servlet-name>Controller</servlet-name>
-        <servlet-class>ua.epam.servletcontroller.Controller</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Controller</servlet-name>
-        <url-pattern>/Controller</url-pattern>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>-->
-    
+   
     <resource-ref>
         <description>Database for application</description>
         <res-ref-name>jdbc/MySqlPool</res-ref-name>
