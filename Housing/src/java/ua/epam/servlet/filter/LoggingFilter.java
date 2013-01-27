@@ -9,13 +9,20 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.log4j.Logger;
 
 public class LoggingFilter implements Filter {
+    
+    Logger logger = Logger.getLogger(LoggingFilter.class);
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
+        
         HttpServletRequest request = (HttpServletRequest) req;
+        
+        
+        
 
         //Get the IP address of client machine.
         String ipAddress = request.getRemoteAddr();
@@ -25,7 +32,7 @@ public class LoggingFilter implements Filter {
 
 
         //Log the IP address and current timestamp + username.
-        System.out.println(">>>>>>>>>>>>>>>> IP=<" + ipAddress + "> URL=<" + URL + ">, user=<" + userName + ">, on time " + new Date().toString());
+        logger.info(">>>>>>>>>>>>>>>> IP=<" + ipAddress + "> URL=<" + URL + ">, user=<" + userName + ">, on time " + new Date().toString());
         chain.doFilter(req, res);
     }
 
@@ -36,7 +43,7 @@ public class LoggingFilter implements Filter {
         String testParam = config.getInitParameter("test-param");
 
         //Print the init parameter
-        System.out.println("Test Param: " + testParam);
+        logger.info("Test Param: " + testParam);
     }
 
     @Override
