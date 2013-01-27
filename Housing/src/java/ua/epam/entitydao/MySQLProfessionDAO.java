@@ -21,7 +21,7 @@ public class MySQLProfessionDAO implements ProfessionDAO {
 
     private Connection accessConn;
     
-    private static Logger logger = Logger.getLogger(MySQLAccessDAO.class);
+    private static Logger logger = Logger.getLogger(MySQLProfessionDAO.class);
 
     public MySQLProfessionDAO(){
         super();

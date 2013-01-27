@@ -21,7 +21,7 @@ public class MySQLAddressDAO implements AddressDAO {
 
     private Connection accessConn;
     
-    private static Logger logger = Logger.getLogger(MySQLAccessDAO.class);
+    private static Logger logger = Logger.getLogger(MySQLAddressDAO.class);
      
     public MySQLAddressDAO(){
         super();
