@@ -47,12 +47,7 @@
                     
                     <td>
                         <select name="workType"><option selected value=2></option>
-                            <%
-                                for (WorkType wrktp : workTypes) {
-                                    out.println("<option value=" + wrktp.getIdWorkType() + ">" + wrktp.getName() + "</option>");
-                                }
-
-                            %>
+                           
                         </select>
                     </td>
                 </tr>
