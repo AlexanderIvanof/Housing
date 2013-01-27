@@ -71,7 +71,7 @@ public class RequestAdd {
      */
     public static void goToHomePage(HttpServletRequest request, HttpServletResponse response){
         try {
-                request.getRequestDispatcher("./user/WelcomePage.jsp").forward(request, response);
+                request.getRequestDispatcher("./WelcomePage.jsp").forward(request, response);
             } catch (ServletException ex) {
                 System.out.println(ex.getMessage());
             } catch (IOException ex){

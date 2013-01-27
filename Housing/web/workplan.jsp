@@ -14,8 +14,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="jazik.jsp" flush="true"/>
+        
         
         <h1>Work Plan</h1>
-    </body>
+    
+    <table width="100%" border="0"><tr align="right"><input type="button" value="Назад" onclick="goBack()"/></tr></table>        
+        <script language="JavaScript">
+            function goBack()
+            {
+                window.history.back();
+            }
+        </script>
+</body>
 </html>

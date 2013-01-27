@@ -36,7 +36,7 @@
             <td align="center" width="20%"><font>Дата заказа</font></td>
             <td align="center" width="20%"><font>Наименование работ</font></td>
             <td align="center" width="20%"><font>Объем работ</font></td>
-            <td align="center" width="20%"><font>К какой дате завершить</font></td>
+            <td align="center" width="20%"><font>Дата выполнения заказа</font></td>
         </tr>
         <%
             if (!list.isEmpty()) {
@@ -56,5 +56,12 @@
             }
         %>
         <table/>
+        <table width="100%" border="0"><tr align="right"><input type="button" value="Назад" onclick="goBack()"/></tr></table>        
+        <script language="JavaScript">
+            function goBack()
+            {
+                window.history.back();
+            }
+        </script>
     </body>
 </html>
