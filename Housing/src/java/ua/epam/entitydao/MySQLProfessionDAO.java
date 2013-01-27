@@ -4,13 +4,16 @@
  */
 package ua.epam.entitydao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.naming.NamingException;
+import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
 import ua.epam.entity.*;
 
 /**
@@ -22,9 +25,16 @@ public class MySQLProfessionDAO implements ProfessionDAO {
     private Connection accessConn;
     
     private static Logger logger = Logger.getLogger(MySQLProfessionDAO.class);
+    
+     public final static String LOGFILE = "log4j.txt";
 
     public MySQLProfessionDAO(){
         super();
+        try {
+            logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
         logger.debug("MySQLProfessionDAO init  ........");
     }
     

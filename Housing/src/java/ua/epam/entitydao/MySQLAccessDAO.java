@@ -1,5 +1,6 @@
 package ua.epam.entitydao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
+import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
 import ua.epam.entity.Access;
 import ua.epam.entity.UserType;
 
@@ -20,19 +23,28 @@ public class MySQLAccessDAO implements AccessDAO {
 
     private Connection accessConn;
     
+    public final static String LOGFILE = "log4j.txt";
+    
     private static Logger logger = Logger.getLogger(MySQLAccessDAO.class);
            
     public MySQLAccessDAO(){
         super();
-        logger.debug("MysqlAccessDAO init ..........");
+        try {
+            logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+        logger.info("MysqlAccessDAO init ..........");
         
     }
 
     @Override
     public int insertAccess(Access acs) {
+        logger.info("MysqlAccessDAO insert ACCESS to DB");
         int generKey = 0;
         try {
             accessConn = MySQLDAOFactory.createConnection();
+            logger.info("Get connection to MySQL with DAO;");
             PreparedStatement query = accessConn.prepareStatement("Insert into access (username, passwd, user_type) values (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             query.setString(1, acs.getUsername());
             query.setString(2, acs.getPassword());
@@ -46,7 +58,7 @@ public class MySQLAccessDAO implements AccessDAO {
             }
 
             query.executeUpdate();
-
+            logger.info("Exequte query;");
             ResultSet rs = query.getGeneratedKeys();
             if (rs.next()) {
                 generKey = rs.getInt(1);
@@ -56,13 +68,16 @@ public class MySQLAccessDAO implements AccessDAO {
 
         } catch (SQLException ex) {
             System.out.print(ex.getMessage());
+            logger.error(ex.getMessage());
         } catch (NamingException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             if (accessConn != null) {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    logger.error(ex.getMessage());
                 }
             }
         }
@@ -72,7 +87,7 @@ public class MySQLAccessDAO implements AccessDAO {
 
     @Override
     public Access getAccess(int idaccess) {
-        logger.debug("MysqlAccessDAO getting access by: " + idaccess);
+        logger.info("MysqlAccessDAO getting access by: " + idaccess);
         Access myNew = new Access();
         Statement statement = null;
         try {
@@ -101,13 +116,16 @@ public class MySQLAccessDAO implements AccessDAO {
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } catch (NamingException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             if (accessConn != null) {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    logger.error(ex.getMessage());
                 }
             }
         }
@@ -116,7 +134,7 @@ public class MySQLAccessDAO implements AccessDAO {
 
     @Override
     public Access getAccess(String username) {
-        logger.debug("MysqlAccessDAO getting access by: " + username);
+        logger.info("MysqlAccessDAO getting access by: <" + username + ">;");
         Access myNew = new Access();
         Statement statement = null;
         try {
@@ -143,13 +161,16 @@ public class MySQLAccessDAO implements AccessDAO {
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } catch (NamingException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             if (accessConn != null) {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    logger.error(ex.getMessage());
                 }
             }
         }
@@ -158,7 +179,7 @@ public class MySQLAccessDAO implements AccessDAO {
 
     @Override
     public List<Access> getAllLoggins() {
-        logger.debug("MysqlAccessDAO getting all logins by: ");
+        logger.info("MysqlAccessDAO getting all logins");
         Statement statement = null;
         List<Access> allLoggins = new ArrayList<Access>();
         try {
@@ -188,13 +209,16 @@ public class MySQLAccessDAO implements AccessDAO {
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } catch (NamingException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             if (accessConn != null) {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    logger.error(ex.getMessage());
                 }
             }
         }

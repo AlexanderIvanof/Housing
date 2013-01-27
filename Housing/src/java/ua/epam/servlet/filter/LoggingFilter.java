@@ -9,21 +9,26 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
 
 public class LoggingFilter implements Filter {
     
-    Logger logger = Logger.getLogger(LoggingFilter.class);
+    public final static String LOGFILE = "log4j.txt";
+    Logger logger;
+    public LoggingFilter() throws IOException{
+       logger = Logger.getLogger(LoggingFilter.class);
+       logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
+    }
+    
+    
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-
         
         HttpServletRequest request = (HttpServletRequest) req;
         
-        
-        
-
         //Get the IP address of client machine.
         String ipAddress = request.getRemoteAddr();
         String localAddr = request.getLocalAddr();
