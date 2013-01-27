@@ -7,6 +7,7 @@ package ua.epam.entity;
  */
 public class Address {
 
+    private int idAddress;
     private String street;
     private String building;
     private String flat;
@@ -18,6 +19,7 @@ public class Address {
         this.street = street;
         this.building = building;
         this.flat = flat;
+        idAddress  = -1;
     }
 
     /**
@@ -64,6 +66,20 @@ public class Address {
     
     @Override
     public String toString(){
-        return "Address [ " + street + ", " + building + ", " + flat + " ]";
+        return "ул. " + street +" / д. " + building + " / кв." + flat;
+    }
+
+    /**
+     * @return the idAddress
+     */
+    public int getIdAddress() {
+        return idAddress;
+    }
+
+    /**
+     * @param idAddress the idAddress to set
+     */
+    public void setIdAddress(int idAddress) {
+        this.idAddress = idAddress;
     }
 }

@@ -2,44 +2,45 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ua.epam.entitydao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
 import javax.naming.NamingException;
 import ua.epam.entity.Approve;
+import ua.epam.entity.RequestEntity;
+import ua.epam.entity.User;
+import ua.epam.entity.WorkType;
 
 /**
  *
  * @author Ivanov Alexander
  */
-public class MySQLApproveDAO implements ApproveDAO {
+public class MySQLWorkerRequestDAO implements WorkerRequestDAO{
 
     private Connection accessConn;
-
+    
     @Override
-    public Approve getApprove(int idrequest) {
-        Approve app = Approve.EMPTY;
+    public List<Integer> getListRequest(int idworker) {
+        List<Integer> myNew = new ArrayList<Integer>();
         Statement statement = null;
         try {
             accessConn = MySQLDAOFactory.createConnection();
             statement = accessConn.createStatement();
-            ResultSet result = statement.executeQuery("Select * from request where idrequest = " + idrequest);
-            result.next();
-            String approve = result.getString("approved");
-            if (approve.equalsIgnoreCase("wait app")) {
-                app = Approve.WAIT_APPROVE;
-            }
-            if (approve.equalsIgnoreCase("approve")) {
-                app = Approve.APPROVE;
-            }
-            if (approve.equalsIgnoreCase("not approve")) {
-                app = Approve.COULD_NOT_BE;
-            }
 
+            ResultSet result = statement.executeQuery("Select * from worker_request where idworker = " + idworker);
+            while(result.next()){
+               myNew.add(Integer.parseInt(result.getString("idrequest")));
+            }
+            
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -53,38 +54,45 @@ public class MySQLApproveDAO implements ApproveDAO {
                 }
             }
         }
-        return app;
+        return myNew;
     }
 
     @Override
-    public void setApprove(int idrequest, Approve current) {
-
+    public int setRow(int idworker, int idrequest) {
+        int generKey = 0;
         try {
-            String app = "empty";
             accessConn = MySQLDAOFactory.createConnection();
-            PreparedStatement query = accessConn.prepareStatement("Insert into request (approved) values (?)");
-            if (current == Approve.APPROVE) {
-                app = "approve";
-            }
-            if (current == Approve.COULD_NOT_BE) {
-                app = "not approve";
-            }
-            query.setString(1, app);
-
+            
+            PreparedStatement query = accessConn.prepareStatement("Insert into worker_request (idworker, idrequest) values (?, ?)", Statement.RETURN_GENERATED_KEYS);
+            query.setInt(1, idworker);
+            query.setInt(2, idrequest);
+            
             query.executeUpdate();
-
+            
+            ResultSet rs = query.getGeneratedKeys();
+            if (rs.next()) {
+                generKey = rs.getInt(1);
+            }
+            rs.close();
             query.close();
+
         } catch (SQLException ex) {
             System.out.print(ex.getMessage());
+            
         } catch (NamingException ex) {
             System.out.println(ex.getMessage());
+            
         } finally {
             if (accessConn != null) {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    
                 }
             }
         }
+
+        return generKey;
     }
+
 }

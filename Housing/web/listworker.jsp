@@ -28,7 +28,6 @@
             <td align="center" width="20%"><font>Имя</font></td>
             <td align="center" width="20%"><font>Фамилия</font></td>
             <td align="center" width="20%"><font>Специальность</font></td>
-            <td align="center" width="15%"><font>Номер команды</font></td>
             <td align="center" width="15%"><font>Занятость</font></td>
         </tr>
         <%
@@ -39,11 +38,6 @@
                     out.println("<td>" + wrkr.getFirstName() + "</td>");
                     out.println("<td>" + wrkr.getLastName() + "</td>");
                     out.println("<td>" + wrkr.getProf() + "</td>");
-                    if (wrkr.getTeam() == -1) {
-                        out.println("<td>Нет команды</td>");
-                    } else {
-                        out.println("<td>" + wrkr.getTeam() + "</td>");
-                    }
                     if (wrkr.isBusy()) {
                         out.println("<td>Занят</td>");
                     } else {

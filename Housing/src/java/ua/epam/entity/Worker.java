@@ -15,11 +15,9 @@ public class Worker {
     private String firstName;
     private String lastName;
     private Profession prof;
-    private int team;
     private boolean busy;
 
     public Worker() {
-        team = -1;
     }
 
     public Worker(int idworker, String firstName, String lastName, Profession prof) {
@@ -27,7 +25,6 @@ public class Worker {
         this.firstName = firstName;
         this.lastName = lastName;
         this.prof = prof;
-        team = -1;
         busy = false;
     }
 
@@ -88,20 +85,6 @@ public class Worker {
     }
 
     /**
-     * @return the team
-     */
-    public int getTeam() {
-        return team;
-    }
-
-    /**
-     * @param team the team to set
-     */
-    public void setTeam(int team) {
-        this.team = team;
-    }
-
-    /**
      * @return the busy
      */
     public boolean isBusy() {
@@ -118,6 +101,6 @@ public class Worker {
     @Override
     public String toString(){
         return "Worker id = " +idworker + ": " +firstName + " " +lastName +
-                " PROF: " + prof + "|" + busy + "|" + team +"|";
+                " PROF: " + prof + "|" + busy + "|";
     }
 }

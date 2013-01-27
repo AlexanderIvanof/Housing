@@ -14,4 +14,10 @@ public interface RequestEntityDAO {
     List<RequestEntity> getAllRequests();
     
     List<RequestEntity> getRequestsByUser(int userId);
+    
+    RequestEntity getRequest(int idrequest);
+    
+     Approve getApprove(int idrequest);
+
+    void setApprove(int idrequest, Approve current);
 }

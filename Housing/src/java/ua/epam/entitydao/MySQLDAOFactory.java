@@ -69,4 +69,14 @@ class MySQLDAOFactory extends DAOFactory {
         return new MySQLWorkerDAO();
     }
 
+    @Override
+    public WorkerRequestDAO getWorkerRequestDAO() {
+        return new MySQLWorkerRequestDAO();
+    }
+
+    @Override
+    public WorkPlanDAO getWorkPlanDAO() {
+        return new MySQLWorkPlanDAO();
+    }
+
 }

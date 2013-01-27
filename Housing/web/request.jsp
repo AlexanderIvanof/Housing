@@ -32,7 +32,7 @@
 
                 </tr>
                 <tr>
-                    <td>К какому времени желаете начать:</td>
+                    <td>Дата начала работ:</td>
                     <td>
                         <input type="date" name="orderDate"></input>
                     </td>
@@ -49,10 +49,6 @@
                             %>
                         </select>
                     </td>
-                </tr>
-                <tr>
-                    <td>Объем работ: </td>
-                    <td><input type="text" name="workScope"></input></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Создать заказ" name="create">

@@ -21,6 +21,10 @@ public abstract class DAOFactory {
     public abstract WorkTypeDAO getWorkTypeDAO();
 
     public abstract WorkerDAO getWorkerDAO();
+    
+    public abstract WorkerRequestDAO getWorkerRequestDAO();
+    
+    public abstract WorkPlanDAO getWorkPlanDAO();
 
     public static DAOFactory getDAOFactory(int wichDB) {
         switch (wichDB) {

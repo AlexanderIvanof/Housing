@@ -83,6 +83,7 @@ public class MySQLAddressDAO implements AddressDAO {
             myNew.setStreet(result.getString("street"));
             myNew.setBuilding(result.getString("building"));
             myNew.setFlat(result.getString("flat"));
+            myNew.setIdAddress(idaddress);
 
             result.close();
         } catch (SQLException ex) {

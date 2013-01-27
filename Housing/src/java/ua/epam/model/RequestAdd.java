@@ -38,8 +38,6 @@ public class RequestAdd {
         WorkTypeDAO typeDAO = daof.getWorkTypeDAO();
         WorkType _workType = typeDAO.getWorkType(workType);
 
-        String workScope = request.getParameter("workScope");//
-
         HttpSession session = request.getSession(true);
         String usr = (String) session.getAttribute(UMConstants.PRINCIPAL);
 
@@ -49,7 +47,7 @@ public class RequestAdd {
 
         GregorianCalendar currentDate = new GregorianCalendar();
         currentDate.setTimeInMillis(System.currentTimeMillis());//
-        RequestEntity newRequest = new RequestEntity(currentDate, _workType, workScope, _orderDate, _usr);
+        RequestEntity newRequest = new RequestEntity(currentDate, _workType, _orderDate, _usr);
 
         RequestEntityDAO req = daof.getRequestEntityDAO();
         int check = req.insertRequest(newRequest);

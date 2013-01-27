@@ -16,7 +16,6 @@ public class RequestEntity {
     private int idRequest;
     private GregorianCalendar requestDate;
     private WorkType typeWork;
-    private String workScope;
     private GregorianCalendar orderFullfillment;
     private User user;
     private Approve approve;
@@ -24,11 +23,10 @@ public class RequestEntity {
     public RequestEntity() {
     }
 
-    public RequestEntity(GregorianCalendar requestDate, WorkType typeWork, String workScope, GregorianCalendar orderFullfillment, User user) {
+    public RequestEntity(GregorianCalendar requestDate, WorkType typeWork, GregorianCalendar orderFullfillment, User user) {
         this.idRequest = 0;
         this.requestDate = requestDate;
         this.typeWork = typeWork;
-        this.workScope = workScope;
         this.orderFullfillment = orderFullfillment;
         this.user = user;
         this.approve = Approve.WAIT_APPROVE;
@@ -77,20 +75,6 @@ public class RequestEntity {
     }
 
     /**
-     * @return the workScope
-     */
-    public String getWorkScope() {
-        return workScope;
-    }
-
-    /**
-     * @param workScope the workScope to set
-     */
-    public void setWorkScope(String workScope) {
-        this.workScope = workScope;
-    }
-
-    /**
      * @return the orderFullfillment
      */
     public GregorianCalendar getOrderFullfillment() {
@@ -127,7 +111,7 @@ public class RequestEntity {
     public String toString() {
         return "Request id = " + idRequest + " request date:" + showDate(requestDate)
                 + "<br> --> " + user + "<br> --> |" + typeWork + "| -- |"
-                + workScope + "| -- |" + showDate(orderFullfillment) + "|; ";
+                + showDate(orderFullfillment) + "|; ";
     }
 
     /**

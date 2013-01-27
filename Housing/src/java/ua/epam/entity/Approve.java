@@ -10,5 +10,14 @@ package ua.epam.entity;
  */
 public enum Approve {
 
-    WAIT_APPROVE, APPROVE, COULD_NOT_BE, EMPTY;
+    WAIT_APPROVE("В обработке"), APPROVE("Принята"), COULD_NOT_BE("Отменена"), EMPTY("пусто");
+    private String name;
+
+    Approve(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

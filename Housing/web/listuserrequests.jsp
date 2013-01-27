@@ -35,8 +35,8 @@
             <td align="center" width="20%"><font>Номер заказа</font></td>
             <td align="center" width="20%"><font>Дата заказа</font></td>
             <td align="center" width="20%"><font>Наименование работ</font></td>
-            <td align="center" width="20%"><font>Объем работ</font></td>
             <td align="center" width="20%"><font>Дата выполнения заказа</font></td>
+            <td align="center" width="20%"><font>Состояние</font></td>
         </tr>
         <%
             if (!list.isEmpty()) {
@@ -45,8 +45,8 @@
                     out.println("<td>" + requ.getIdRequest() + "</td>");
                     out.println("<td>" + RequestEntity.showDate(requ.getRequestDate()) + "</td>");
                     out.println("<td>" + requ.getTypeWork().getName() + "</td>");
-                    out.println("<td>" + requ.getWorkScope() + "</td>");
                     out.println("<td>" + RequestEntity.showDate(requ.getOrderFullfillment()) + "</td>");
+                    out.println("<td>" + requ.getApprove().getName() + "</td>");
                     out.println("</tr>");
                 }
             } else {
@@ -56,7 +56,7 @@
             }
         %>
         <table/>
-        <table width="100%" border="0"><tr align="right"><input type="button" value="Назад" onclick="goBack()"/></tr></table>        
+        <table width="100%" border="0"><tr align="right"><td><input type="button" value="Назад" onclick="goBack()"/></td></tr></table>        
         <script language="JavaScript">
             function goBack()
             {
