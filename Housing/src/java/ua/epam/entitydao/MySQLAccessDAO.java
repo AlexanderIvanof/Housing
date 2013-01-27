@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
+import org.apache.log4j.Logger;
 import ua.epam.entity.Access;
 import ua.epam.entity.UserType;
 
@@ -18,6 +19,14 @@ import ua.epam.entity.UserType;
 public class MySQLAccessDAO implements AccessDAO {
 
     private Connection accessConn;
+    
+    private static Logger logger = Logger.getLogger(MySQLAccessDAO.class);
+           
+    public MySQLAccessDAO(){
+        super();
+        logger.debug("MysqlAccessDAO init ..........");
+        
+    }
 
     @Override
     public int insertAccess(Access acs) {
@@ -63,6 +72,7 @@ public class MySQLAccessDAO implements AccessDAO {
 
     @Override
     public Access getAccess(int idaccess) {
+        logger.debug("MysqlAccessDAO getting access by: " + idaccess);
         Access myNew = new Access();
         Statement statement = null;
         try {
@@ -106,6 +116,7 @@ public class MySQLAccessDAO implements AccessDAO {
 
     @Override
     public Access getAccess(String username) {
+        logger.debug("MysqlAccessDAO getting access by: " + username);
         Access myNew = new Access();
         Statement statement = null;
         try {
@@ -147,6 +158,7 @@ public class MySQLAccessDAO implements AccessDAO {
 
     @Override
     public List<Access> getAllLoggins() {
+        logger.debug("MysqlAccessDAO getting all logins by: ");
         Statement statement = null;
         List<Access> allLoggins = new ArrayList<Access>();
         try {

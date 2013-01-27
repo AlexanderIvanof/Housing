@@ -8,14 +8,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" href="/images/dispatch.ico" type="x-icon">
-        <link rel="shortcut icon" href="/images/dispatch.ico" type="x-icon">
+        <link rel="icon" href="images/dispatch.ico" type="x-icon">
+        <link rel="shortcut icon" href="images/dispatch.ico" type="x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="jazik.jsp" flush="true"/>
+        
         
         <h1>Work Plan</h1>
-    </body>
+    
+    <table width="100%" border="0"><tr align="right"><input type="button" value="Назад" onclick="goBack()"/></tr></table>        
+        <script language="JavaScript">
+            function goBack()
+            {
+                window.history.back();
+            }
+        </script>
+</body>
 </html>

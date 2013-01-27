@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.naming.NamingException;
+import org.apache.log4j.Logger;
 import ua.epam.entity.*;
 
 /**
@@ -19,9 +20,17 @@ import ua.epam.entity.*;
 public class MySQLProfessionDAO implements ProfessionDAO {
 
     private Connection accessConn;
+    
+    private static Logger logger = Logger.getLogger(MySQLAccessDAO.class);
 
+    public MySQLProfessionDAO(){
+        super();
+        logger.debug("MySQLProfessionDAO init  ........");
+    }
+    
     @Override
     public Profession getProfession(int idprofession) {
+        logger.debug("MySQLProfessionDAO detting profession by id: "  + idprofession );
         Profession myNew = new Profession();
         Statement statement = null;
         try {

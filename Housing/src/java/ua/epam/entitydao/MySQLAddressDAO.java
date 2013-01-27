@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.naming.NamingException;
+import org.apache.log4j.Logger;
 import ua.epam.entity.*;
 
 /**
@@ -19,6 +20,13 @@ import ua.epam.entity.*;
 public class MySQLAddressDAO implements AddressDAO {
 
     private Connection accessConn;
+    
+    private static Logger logger = Logger.getLogger(MySQLAccessDAO.class);
+     
+    public MySQLAddressDAO(){
+        super();
+        logger.debug("MySQLAddressDAO init  ........");
+    } 
 
     @Override
     public int insertAddress(Address myadd) {
@@ -56,6 +64,7 @@ public class MySQLAddressDAO implements AddressDAO {
 
     @Override
     public Address getAddress(int idaddress) {
+        logger.debug("MySQLAddressDAO get addres by id: " + idaddress);
         Address myNew = new Address();
         Statement statement = null;
         try {

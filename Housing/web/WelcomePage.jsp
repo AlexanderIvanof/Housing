@@ -61,7 +61,7 @@
                 </td>
                 <td align="center" width="50%">
                     <b><font size="4">
-                        <a href="listrequests.jsp"><%=bundle.getString("welcome.page.show")%></a>
+                        <a href="listuserrequests.jsp"><%=bundle.getString("welcome.page.show")%></a>
                     </font></b>
                 </td>
             </tr>

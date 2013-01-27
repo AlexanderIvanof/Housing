@@ -1,7 +1,8 @@
 package ua.epam.entity;
 
 /**
- *
+ * Entity for log in.
+ * 
  * @author Ivanov Alexander
  */
 public class Access {
@@ -14,7 +15,12 @@ public class Access {
     public Access(){
         
     }
-
+    /**
+     * 
+     * @param username
+     * @param password
+     * @param userType 
+     */
     public Access(String username, String password, UserType userType) {
         this.idAccess = 0;
         this.username = username;
