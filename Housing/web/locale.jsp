@@ -6,6 +6,7 @@
 
 <%@page import="java.util.Locale, java.util.ResourceBundle"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%!Locale client;%>
 <%!Locale sess;%>
 <!DOCTYPE html>
@@ -15,6 +16,9 @@
         <title>Выбор языка</title>
     </head>
     <body bgcolor="#7FFFD4">
+        
+        <h2><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${curTime}" /></h2>
+        
         <%
             sess = (Locale) session.getAttribute("language");
             if (sess != null) {
