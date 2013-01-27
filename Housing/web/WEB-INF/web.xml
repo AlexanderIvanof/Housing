@@ -22,13 +22,17 @@
         <taglib-location>/WEB-INF/c-rt.tld</taglib-location>
     </taglib>
     <taglib>
-        <taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
-        <taglib-location>/WEB-INF/sql.tld</taglib-location>
+        <taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+        <taglib-location>/WEB-INF/x.tld</taglib-location>
     </taglib>
     <taglib>
-        <taglib-uri>http://java.sun.com/jstl/sql-rt</taglib-uri>
-        <taglib-location>/WEB-INF/sql-rt.tld</taglib-location>
-    </taglib>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </taglib>
+        <taglib-uri>http://java.sun.com/jstl/x-rt</taglib-uri>
+        <taglib-location>/WEB-INF/x-rt.tld</taglib-location>
+    </taglib>   
+   <taglib>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <taglib>
+    <taglib-uri>/tlt</taglib-uri>
+    <taglib-location>/WEB-INF/taglib.tld</taglib-location>
+  </taglib>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
     <!--<servlet>
         <description></description>
         <display-name>Controller</display-name>
