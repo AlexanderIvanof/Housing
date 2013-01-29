@@ -9,8 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 import javax.naming.NamingException;
+import ua.epam.entity.*;
 
 /**
  *
@@ -59,5 +62,53 @@ public class MySQLWorkPlanDAO implements WorkPlanDAO {
             }
         }
         return generKey;
+    }
+
+    @Override
+    public List<WorkPlan> getWorkPlans() {
+        List<WorkPlan> myNew = new ArrayList<WorkPlan>();
+        Statement statement = null;
+        try {
+            accessConn = MySQLDAOFactory.createConnection();
+            statement = accessConn.createStatement();
+
+            ResultSet result = statement.executeQuery("Select * from work_plan");
+            while (result.next()) {
+                DAOFactory daof = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+                WorkPlan myPlan = new WorkPlan();
+                myPlan.setIdPlan(result.getInt("idplan"));
+
+                //take Date
+                GregorianCalendar gcal = new GregorianCalendar();
+                gcal.setTimeInMillis(result.getDate("plan_date").getTime());
+                myPlan.setPlanDate(gcal);
+
+                AddressDAO adao = daof.getAddressDAO();
+                Address addr = adao.getAddress(result.getInt("address"));
+                myPlan.setAddress(addr);
+
+                WorkerDAO wdao = daof.getWorkerDAO();
+                Worker foreman = wdao.getWorker(result.getInt("foreman"));
+                Worker worker = wdao.getWorker(result.getInt("worker"));
+                myPlan.setForeman(foreman);
+                myPlan.setWorker(worker);
+
+                myNew.add(myPlan);
+            }
+
+            result.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } catch (NamingException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (accessConn != null) {
+                try {
+                    accessConn.close();
+                } catch (SQLException ex) {
+                }
+            }
+        }
+        return myNew;
     }
 }

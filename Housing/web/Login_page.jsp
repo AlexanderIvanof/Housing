@@ -1,3 +1,9 @@
+<%-- 
+    Document   : Login_page
+    Created on : 24.01.2013, 11:30:00
+    Author     : Alexandr Ivanov
+--%>
+
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8" errorPage="errorpage.jsp"%>
 <%@ page import="java.util.*, ua.epam.servlet.filter.*, ua.epam.servletcontroller.*"%>
 <%@page import="java.util.Locale, java.util.ResourceBundle"%>
@@ -11,7 +17,7 @@
         <title>ЖЕК №81</title>
     </head>
 
-    <body bgcolor="#7FFFD4">
+    <body bgcolor="#F0FFFF">
         <%
             sess = (Locale) session.getAttribute("language");
             if (sess != null) {
@@ -20,7 +26,7 @@
                 client = request.getLocale();
             }
 
-            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);
+            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.LanguageBundle", client);
         %>
         <form name="auth" action="WauthUser.do" method="POST">
             <p align="center"></p>
@@ -80,7 +86,7 @@
                         <td></td>
                         <td align="right">
                             <input type="submit" value="<%=bundle.getString("login.page.button.ok")%>" name="login">&nbsp;
-                            <input type="button" value="<%=bundle.getString("login.page.button.cancel")%>" name="cancel"/>
+                            <input type="reset" value="<%=bundle.getString("login.page.button.cancel")%>"/>
                         </td>
                     </tr>
                 </table>

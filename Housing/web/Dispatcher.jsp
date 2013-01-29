@@ -14,9 +14,9 @@
         <link rel="icon" href="images/dispatch.ico" type="x-icon">
         <link rel="shortcut icon" href="images/dispatch.ico" type="x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Диспетчер page</title>
+        <title>Диспетчер</title>
     </head>
-    <body bgcolor="#7FFFD4">
+    <body bgcolor="#F0FFFF">
         <jsp:include page="locale.jsp" flush="true"/>
         <%
             sess = (Locale) session.getAttribute("language");
@@ -26,27 +26,27 @@
                 client = request.getLocale();
             }
 
-            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.Dispatcher", client);
+            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.LanguageBundle", client);
         %>
-        <h1><%=bundle.getString("dispatcher.welcome")%></h1>
-        <table border="2" align="center">
-            <tr>
-                <td align="center"><a href="listworker.jsp"><%=bundle.getString("dispatcher.list.worker")%></a></td>
-                <td align="center"><a href="workplan.jsp"><%=bundle.getString("dispatcher.list.workplan")%></a></td>
-                <td align="center"><a href="listrequest.jsp"><%=bundle.getString("dispatcher.list.request")%></a></td>
-            </tr>
-        </table>
-            <p align="right">
-            <font size="3"><%=bundle.getString("dispatcher.exit")%></font>
-            <input type="button" value="<%=bundle.getString("dispatcher.button")%>" name="btLogin" onClick="showLoginHtm()">
-        </p>
-        <p>&nbsp;</p>
-        <script language="JavaScript">
-            function showLoginHtm()
-            {
-                open("LogOut.jsp");
-            }
-        </script>
-            
-    </body>
+    <center><h1><%=bundle.getString("dispatcher.welcome")%></h1></center>
+    <table border="2" align="center">
+        <tr>
+            <td align="center"><a href="listworker.jsp"><%=bundle.getString("dispatcher.list.worker")%></a></td>
+            <td align="center"><a href="workplan.jsp"><%=bundle.getString("dispatcher.list.workplan")%></a></td>
+            <td align="center"><a href="listrequest.jsp"><%=bundle.getString("dispatcher.list.request")%></a></td>
+        </tr>
+    </table>
+    <p align="right">
+        <font size="3"><%=bundle.getString("dispatcher.exit")%></font>
+        <input type="button" value="<%=bundle.getString("dispatcher.button")%>" name="btLogin" onClick="showLoginHtm()">
+    </p>
+    <p>&nbsp;</p>
+    <script language="JavaScript">
+        function showLoginHtm()
+        {
+            open("LogOut.jsp");
+        }
+    </script>
+
+</body>
 </html>

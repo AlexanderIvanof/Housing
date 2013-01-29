@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.naming.NamingException;
 import org.apache.log4j.FileAppender;
@@ -23,7 +24,7 @@ public class MySQLAccessDAO implements AccessDAO {
 
     private Connection accessConn;
     
-    public final static String LOGFILE = "log4j.txt";
+    public final static String LOGFILE = "./logs/log4j.log";
     
     private static Logger logger = Logger.getLogger(MySQLAccessDAO.class);
            
@@ -35,6 +36,8 @@ public class MySQLAccessDAO implements AccessDAO {
             System.err.println(ex.getMessage());
         }
         logger.info("MysqlAccessDAO init ..........");
+        Date inDate = new Date(System.currentTimeMillis());
+        logger.info("Time: " + inDate);
         
     }
 

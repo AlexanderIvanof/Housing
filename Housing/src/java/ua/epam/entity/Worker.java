@@ -100,7 +100,7 @@ public class Worker {
     
     @Override
     public String toString(){
-        return "Worker id = " +idworker + ": " +firstName + " " +lastName +
-                " PROF: " + prof + "|" + busy + "|";
+        return "id = " +idworker + ": " +firstName + " " +lastName +
+                " PROF: " + prof + "|";
     }
 }

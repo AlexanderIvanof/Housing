@@ -11,7 +11,7 @@ import java.util.ListResourceBundle;
  *
  * @author Ivanov Alexander
  */
-public class WelcomePage_ru_RU extends ListResourceBundle{
+public class LanguageBundle_ru_RU extends ListResourceBundle{
 
     static Object[][] contents = {
         {"welcome.page.welcome", "Добро пожаловать на стартовую страницу!"},
@@ -27,7 +27,7 @@ public class WelcomePage_ru_RU extends ListResourceBundle{
         {"login.page.username", "Имя пользователя:"},
         {"login.page.password", "Пароль:"},
         {"login.page.button.ok", "Принять"},
-        {"login.page.button.cancel", "Отменить"}};
+        {"login.page.button.cancel", "Сбросить"}};
     
     @Override
     protected Object[][] getContents() {

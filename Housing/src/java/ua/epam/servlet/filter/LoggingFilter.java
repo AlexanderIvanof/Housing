@@ -15,8 +15,9 @@ import org.apache.log4j.SimpleLayout;
 
 public class LoggingFilter implements Filter {
     
-    public final static String LOGFILE = "log4j.txt";
+    public final static String LOGFILE = "./logs/log4j.log";
     Logger logger;
+    
     public LoggingFilter() throws IOException{
        logger = Logger.getLogger(LoggingFilter.class);
        logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
@@ -27,6 +28,8 @@ public class LoggingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         
+        Date inDate = new Date(System.currentTimeMillis());
+        logger.info("Time: " + inDate);
         HttpServletRequest request = (HttpServletRequest) req;
         
         //Get the IP address of client machine.

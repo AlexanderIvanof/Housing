@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import javax.naming.NamingException;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
@@ -26,7 +27,7 @@ public class MySQLProfessionDAO implements ProfessionDAO {
     
     private static Logger logger = Logger.getLogger(MySQLProfessionDAO.class);
     
-     public final static String LOGFILE = "log4j.txt";
+     public final static String LOGFILE = "./logs/log4j.log";
 
     public MySQLProfessionDAO(){
         super();
@@ -35,12 +36,14 @@ public class MySQLProfessionDAO implements ProfessionDAO {
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
-        logger.debug("MySQLProfessionDAO init  ........");
+        logger.info("MySQLProfessionDAO init  ........");
+        Date inDate = new Date(System.currentTimeMillis());
+        logger.info("Time: " + inDate);
     }
     
     @Override
     public Profession getProfession(int idprofession) {
-        logger.debug("MySQLProfessionDAO detting profession by id: "  + idprofession );
+        logger.info("MySQLProfessionDAO detting profession by id: "  + idprofession );
         Profession myNew = new Profession();
         Statement statement = null;
         try {
@@ -55,13 +58,16 @@ public class MySQLProfessionDAO implements ProfessionDAO {
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } catch (NamingException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             if (accessConn != null) {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    logger.error(ex.getMessage());
                 }
             }
         }
@@ -92,11 +98,13 @@ public class MySQLProfessionDAO implements ProfessionDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             if (accessConn != null) {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    logger.error(ex.getMessage());
                 }
             }
         }

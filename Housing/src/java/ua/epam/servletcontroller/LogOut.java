@@ -33,11 +33,11 @@ public class LogOut extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String exit = request.getParameter("exit");
-        
-        if(exit.equalsIgnoreCase("Ok")){
+        String back = request.getParameter("back");
+        if(exit != null){
             GoOut.goOut(request, response);
         }
-        if(exit.equalsIgnoreCase("Back")){
+        if(back != null){
             GoOut.goBack(request, response);
         }
     } 

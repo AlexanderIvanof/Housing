@@ -1,8 +1,15 @@
-<%@page language="java" contentType="text/html" pageEncoding="UTF-8" errorPage="errorpage.jsp"%>
+<%-- 
+    Document   : request
+    Created on : 24.01.2013, 11:18:53
+    Author     : Alexandr Ivanov
+--%>
 
-<%@page  import="ua.epam.entitydao.*,ua.epam.servletcontroller.*" %>
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8" errorPage="errorpage.jsp"%>
+<%@page import="ua.epam.entitydao.*" %>
 <%@page import="ua.epam.entity.*" %>
-<%@page  import="java.util.List"%>
+<%@page import="java.util.*"%>
+<%!Locale client;%>
+<%!Locale sess;%>
 
 
 <!DOCTYPE html >
@@ -13,9 +20,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Заказ работ</title>
     </head>
-    <body bgcolor="#7FFFD4">
+    <body bgcolor="#F0FFFF">
+        <%
+            sess = (Locale) session.getAttribute("language");
+            if (sess != null) {
+                client = sess;
+            } else {
+                client = request.getLocale();
+            }
 
-        <h1>Заказать работы</h1>
+            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.LanguageBundle", client);
+        %>
+
+        <h1><%=bundle.getString("request.page.order")%></h1>
 
         <form method="POST" action="./Control">
             <table border="1">
@@ -32,13 +49,13 @@
 
                 </tr>
                 <tr>
-                    <td>Дата начала работ:</td>
+                    <td><%=bundle.getString("request.page.date")%></td>
                     <td>
                         <input type="date" name="orderDate"></input>
                     </td>
                 </tr>
                 <tr>
-                    <td>Тип работ:</td>
+                    <td><%=bundle.getString("request.page.type")%></td>
                     <td>
                         <select name="workType"><option selected value=1></option>
                             <%
@@ -51,9 +68,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Создать заказ" name="create">
-                        <input type="reset" value="Сбросить">
-                        <input type="submit" value="Back" name="back"></td>
+                    <td><input type="submit" value="<%=bundle.getString("request.page.button.create")%>" name="create">
+                        <input type="reset" value="<%=bundle.getString("request.page.button.cancel")%>">
+                        <input type="submit" value="<%=bundle.getString("page.button.back")%>" name="back"></td>
                 </tr>
             </table>
 

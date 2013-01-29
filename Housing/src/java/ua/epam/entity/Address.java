@@ -66,7 +66,7 @@ public class Address {
     
     @Override
     public String toString(){
-        return "ул. " + street +" / д. " + building + " / кв." + flat;
+        return "ул. " + street +" / д." + building + " / кв." + flat;
     }
 
     /**

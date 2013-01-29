@@ -5,8 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@page import="ua.epam.entity.*, ua.epam.entitydao.*"%> 
+<%!Locale client;%>
+<%!Locale sess;%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,15 +22,26 @@
         WorkerDAO wdao = daof.getWorkerDAO();
         List<Worker> list = wdao.getAllWorkers();
     %>
-    <body bgcolor="#7FFFD4">
-    <center><h3>Список рабочих жека.</h3></center>
+    <body bgcolor="#F0FFFF">
+        <%
+            sess = (Locale) session.getAttribute("language");
+            if (sess != null) {
+                client = sess;
+            } else {
+                client = request.getLocale();
+            }
+
+            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.LanguageBundle", client);
+        %>
+
+    <center><h2><%=bundle.getString("listworker.page.list")%></h2></center>
     <table align="center" border="4" width="60%"
            <tr>
             <td align="center" width="5%"><font>ID</font></td>
-            <td align="center" width="20%"><font>Имя</font></td>
-            <td align="center" width="20%"><font>Фамилия</font></td>
-            <td align="center" width="20%"><font>Специальность</font></td>
-            <td align="center" width="15%"><font>Занятость</font></td>
+            <td align="center" width="20%"><font><%=bundle.getString("listworker.page.table.name")%></font></td>
+            <td align="center" width="20%"><font><%=bundle.getString("listworker.page.table.lastname")%></font></td>
+            <td align="center" width="20%"><font><%=bundle.getString("listworker.page.table.prof")%></font></td>
+            <td align="center" width="15%"><font><%=bundle.getString("listworker.page.table.busy")%></font></td>
         </tr>
         <%
             if (!list.isEmpty()) {
@@ -39,20 +52,26 @@
                     out.println("<td>" + wrkr.getLastName() + "</td>");
                     out.println("<td>" + wrkr.getProf() + "</td>");
                     if (wrkr.isBusy()) {
-                        out.println("<td>Занят</td>");
+                        out.println("<td>" + bundle.getString("listworker.page.busy") + "</td>");
                     } else {
-                        out.println("<td>Свободен</td>");
+                        out.println("<td>" + bundle.getString("listworker.page.free") + "</td>");
                     }
                     out.println("</tr>");
                 }
             } else {
                 out.println("<tr>");
-                out.println("<td>Рабочих нет!</td>");
+                out.println("<td>" + bundle.getString("listworker.page.table.empty") + "</td>");
                 out.println("</tr>");
             }
         %>
         <table/>
-        <table width="100%" border="0"><tr align="right"><input type="button" value="Назад" onclick="goBack()"/></tr></table>        
+        <table width="100%" border="0">
+            <tr align="right">
+                <td>
+                <input type="button" value="<%=bundle.getString("page.button.back")%>" onclick="goBack()"/>
+                </td>
+            </tr>
+        </table>        
         <script language="JavaScript">
             function goBack()
             {

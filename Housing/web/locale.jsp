@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.util.Locale, java.util.ResourceBundle"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" errorPage="errorpage.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%!Locale client;%>
 <%!Locale sess;%>
@@ -15,10 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Выбор языка</title>
     </head>
-    <body bgcolor="#7FFFD4">
-        
-        <h2><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${curTime}" /></h2>
-        
+    <body bgcolor="#F0FFFF">
         <%
             sess = (Locale) session.getAttribute("language");
             if (sess != null) {
@@ -27,8 +24,24 @@
                 client = request.getLocale();
             }
 
-            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.WelcomePage", client);
+            ResourceBundle bundle = ResourceBundle.getBundle("ua.epam.i18n.LanguageBundle", client);
         %>
+        <table border="0">
+            <tr>
+                <td></td>
+                <td></td>
+
+                <%
+                    String pattern;
+                    if (client.equals(Locale.UK)) {
+                        pattern = "HH:mm yyyy-MM-dd";
+                    } else {
+                        pattern = "HH:mm dd-MM-yyyy";
+                    }
+                %>
+                <td align="right"><fmt:formatDate pattern="<%=pattern%>" value="${curTime}"/></td>
+            </tr>
+        </table>
         <form action="./LangChange" method="GET">
             <table align="center">
                 <tr>

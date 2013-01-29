@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import javax.naming.NamingException;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
@@ -24,7 +25,7 @@ public class MySQLAddressDAO implements AddressDAO {
 
     private Connection accessConn;
     private static Logger logger = Logger.getLogger(MySQLAddressDAO.class);
-    public final static String LOGFILE = "log4j.txt";
+    public final static String LOGFILE = "./logs/log4j.log";
 
     public MySQLAddressDAO() {
         super();
@@ -33,7 +34,9 @@ public class MySQLAddressDAO implements AddressDAO {
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
-        logger.debug("MySQLAddressDAO init  ........");
+        logger.info("MySQLAddressDAO init  ........");
+        Date inDate = new Date(System.currentTimeMillis());
+        logger.info("Time: " + inDate);
     }
 
     @Override
@@ -56,13 +59,16 @@ public class MySQLAddressDAO implements AddressDAO {
             query.close();
         } catch (SQLException ex) {
             System.out.print(ex.getMessage());
+            logger.error(ex.getMessage());
         } catch (NamingException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             if (accessConn != null) {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    logger.error(ex.getMessage());
                 }
             }
         }
@@ -88,13 +94,16 @@ public class MySQLAddressDAO implements AddressDAO {
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } catch (NamingException ex) {
             System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             if (accessConn != null) {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    logger.error(ex.getMessage());
                 }
             }
         }
