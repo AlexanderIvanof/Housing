@@ -2,7 +2,7 @@ package ua.epam.entity;
 
 /**
  * Entity for log in.
- * 
+ *
  * @author Ivanov Alexander
  */
 public class Access {
@@ -11,15 +11,20 @@ public class Access {
     private String username;
     private String password;
     private UserType userType;
-    
-    public Access(){
-        
-    }
+
     /**
-     * 
+     *
+     * Construct empty access
+     */
+    public Access() {
+    }
+
+    /**
+     * Construct new access with parameters
+     *
      * @param username
      * @param password
-     * @param userType 
+     * @param userType - Mean USER or ADMINISTRATOR
      */
     public Access(String username, String password, UserType userType) {
         this.idAccess = 0;
@@ -83,10 +88,9 @@ public class Access {
     public void setIdAccess(int idAccess) {
         this.idAccess = idAccess;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "id = " + idAccess + ":[ " + username + ", " + password + " ]";
     }
-    
 }

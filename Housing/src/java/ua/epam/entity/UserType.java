@@ -6,7 +6,8 @@
 package ua.epam.entity;
 
 /**
- *
+ * Enum for type of usser
+ *  
  * @author Alexandr Ivanov
  */
 public enum UserType {

@@ -1,5 +1,10 @@
 package ua.epam.servlet.filter;
 
+/**
+ * Constants to get type user and home page
+ * 
+ * @author Alexandr Ivanov
+ */
 public interface UMConstants {
 
     String REDIRECT_URL = "RedirectURL";

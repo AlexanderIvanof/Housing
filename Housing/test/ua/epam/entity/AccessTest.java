@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.epam.entity;
 
 import org.junit.After;
@@ -12,26 +8,27 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * Test access class
  *
- * @author alexandr
+ * @author Alexandr Ivanov
  */
 public class AccessTest {
-    
+
     public AccessTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -48,7 +45,7 @@ public class AccessTest {
         String result = instance.getUsername();
         assertEquals(expResult, "name");
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
 
     /**
@@ -63,8 +60,8 @@ public class AccessTest {
         instance.setUsername(username);
         String result = instance.getUsername();
         assertEquals(expResult, result);
-       
-        
+
+
     }
 
     /**
@@ -78,7 +75,7 @@ public class AccessTest {
         instance.setPassword("pass");
         String result = instance.getPassword();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -87,7 +84,7 @@ public class AccessTest {
     @Test
     public void testSetPassword() {
         System.out.println("setPassword");
-        
+
         String expResult = "pass";
         String password = "pass";
         Access instance = new Access();
@@ -106,7 +103,7 @@ public class AccessTest {
         UserType expResult = null;
         UserType result = instance.getUserType();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -118,7 +115,7 @@ public class AccessTest {
         UserType userType = null;
         Access instance = new Access();
         instance.setUserType(userType);
-        
+
     }
 
     /**
@@ -131,7 +128,7 @@ public class AccessTest {
         int expResult = 0;
         int result = instance.getIdAccess();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -143,7 +140,7 @@ public class AccessTest {
         int idAccess = 0;
         Access instance = new Access();
         instance.setIdAccess(idAccess);
-        
+
     }
 
     /**
@@ -155,6 +152,6 @@ public class AccessTest {
         String expResult = "";
         String result = instance.toString();
         assertEquals(expResult, result);
-        
+
     }
 }

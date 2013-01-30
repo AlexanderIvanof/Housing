@@ -7,15 +7,15 @@ package ua.epam.tag;
 import java.io.IOException;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.BodyContent;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 
 /**
+ * Tag handler for custom tag.
  *
- * @author Призрак
+ * @author Alexandr Ivanov
  */
 public class WriteRow extends BodyTagSupport {
+
     private String onumber;
     private String foreman;
     private String worker;
@@ -28,7 +28,7 @@ public class WriteRow extends BodyTagSupport {
     public WriteRow() {
         super();
     }
-    
+
     /**
      * This method is called when the JSP engine encounters the start tag, after
      * the attributes are processed. Scripting variables (if any) have their
@@ -81,8 +81,6 @@ public class WriteRow extends BodyTagSupport {
      * generated. Do not modify this method. Instead, modify the methods that
      * this method calls.
      */
-
- 
     public void setOnumber(String onumber) {
         this.onumber = onumber;
     }

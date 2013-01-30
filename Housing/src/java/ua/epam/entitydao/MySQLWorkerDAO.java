@@ -15,6 +15,7 @@ import javax.naming.NamingException;
 import ua.epam.entity.*;
 
 /**
+ * DAO for Worker
  *
  * @author Ivanov Alexander
  */
@@ -35,23 +36,18 @@ public class MySQLWorkerDAO implements WorkerDAO {
         try {
             accessConn = MySQLDAOFactory.createConnection();
             statement = accessConn.createStatement();
-
             ResultSet result = statement.executeQuery("Select * from workers where idworker = " + idworker);
             result.next();
-
             myNew.setIdworker(idworker);
             myNew.setFirstName(result.getString("first_name"));
             myNew.setLastName(result.getString("last_name"));
             myNew.setBusy(result.getBoolean("busy"));
             int _profession = result.getInt("profession");
-            
 
             /* get Profession in DAO */
             MySQLProfessionDAO profDAO = new MySQLProfessionDAO();
             Profession _prof = profDAO.getProfession(_profession);
-
             myNew.setProf(_prof);
-
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -62,6 +58,7 @@ public class MySQLWorkerDAO implements WorkerDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -75,11 +72,9 @@ public class MySQLWorkerDAO implements WorkerDAO {
         try {
             accessConn = MySQLDAOFactory.createConnection();
             statement = accessConn.createStatement();
-
             ResultSet result = statement.executeQuery("Select * from workers where first_name = '" + firstName
                     + "' and last_name = '" + lastName + "'");
             result.next();
-
             myNew.setIdworker(result.getInt("idworker"));
             myNew.setFirstName(result.getString("first_name"));
             myNew.setLastName(result.getString("last_name"));
@@ -89,9 +84,7 @@ public class MySQLWorkerDAO implements WorkerDAO {
             /* get Profession in DAO */
             MySQLProfessionDAO profDAO = new MySQLProfessionDAO();
             Profession _prof = profDAO.getProfession(_profession);
-
             myNew.setProf(_prof);
-
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -102,6 +95,7 @@ public class MySQLWorkerDAO implements WorkerDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -128,9 +122,7 @@ public class MySQLWorkerDAO implements WorkerDAO {
                 MySQLProfessionDAO profDAO = new MySQLProfessionDAO();
                 Profession _prof = profDAO.getProfession(_profession);
                 _wrkr.setProf(_prof);
-
                 allWorkers.add(_wrkr);
-
             }
             result.close();
         } catch (SQLException ex) {
@@ -142,6 +134,7 @@ public class MySQLWorkerDAO implements WorkerDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -194,14 +187,14 @@ public class MySQLWorkerDAO implements WorkerDAO {
 
     @Override
     public void setWorkerBusy(int idworker, boolean busy) {
-        try{
+        try {
             accessConn = MySQLDAOFactory.createConnection();
             PreparedStatement query = accessConn.prepareStatement("Update workers set busy = ? where idworker = " + idworker);
             query.setBoolean(1, busy);
             query.executeUpdate();
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }catch(NamingException ex){
+        } catch (NamingException ex) {
             System.out.println(ex.getMessage());
         } finally {
             if (accessConn != null) {
@@ -212,7 +205,6 @@ public class MySQLWorkerDAO implements WorkerDAO {
                 }
             }
         }
-         
-    }
 
+    }
 }

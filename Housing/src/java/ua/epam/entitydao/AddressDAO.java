@@ -3,6 +3,7 @@ package ua.epam.entitydao;
 import ua.epam.entity.Address;
 
 /**
+ * DAO Address
  *
  * @author Alexandr Ivanov
  */

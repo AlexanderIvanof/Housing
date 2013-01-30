@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.epam.entitydao;
 
 import java.io.IOException;
@@ -18,6 +14,7 @@ import org.apache.log4j.SimpleLayout;
 import ua.epam.entity.*;
 
 /**
+ * DAO Address for MySQL
  *
  * @author Ivanov Alexander
  */
@@ -27,6 +24,9 @@ public class MySQLAddressDAO implements AddressDAO {
     private static Logger logger = Logger.getLogger(MySQLAddressDAO.class);
     public final static String LOGFILE = "./logs/log4j.log";
 
+    /**
+     * Cunstruct an empty address DAO. Also create loggining for log4j
+     */
     public MySQLAddressDAO() {
         super();
         try {
@@ -78,7 +78,7 @@ public class MySQLAddressDAO implements AddressDAO {
 
     @Override
     public Address getAddress(int idaddress) {
-        logger.info("MySQLAddressDAO get addres by id: <" + idaddress +">;");
+        logger.info("MySQLAddressDAO get addres by id: <" + idaddress + ">;");
         Address myNew = new Address();
         Statement statement = null;
         try {

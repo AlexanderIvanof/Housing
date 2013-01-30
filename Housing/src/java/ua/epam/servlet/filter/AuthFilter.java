@@ -45,18 +45,18 @@ public class AuthFilter implements Filter {
             String stringFatal = "Wrong user name or password";
 
             if (request instanceof HttpServletRequest) {
-                
+
                 HttpServletRequest req = (HttpServletRequest) request;
                 HttpSession session = req.getSession(true);
-                req.setAttribute("curTime", new Date() );
-                req.setAttribute("curTimeMillis", System.currentTimeMillis() );
+                req.setAttribute("curTime", new Date());
+                req.setAttribute("curTimeMillis", System.currentTimeMillis());
                 Object auth = session.getAttribute(UMConstants.PRINCIPAL);
-                UserType uType = (UserType)session.getAttribute(UMConstants.USER_TYPE);
+                UserType uType = (UserType) session.getAttribute(UMConstants.USER_TYPE);
 
 
                 if (auth != null) {
                     chain.doFilter(req, response);
-                    System.out.println("===Authorized user =<" + auth.toString() + "> type <"+uType.toString()+">===");
+                    System.out.println("===Authorized user =<" + auth.toString() + "> type <" + uType.toString() + ">===");
                 } else if (req.getServletPath() != null && req.getServletPath().endsWith(loginURI)) {
                     // client trying to login - let him do this
                     System.out.println("go to login page<" + loginURI + ">");

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.epam.model;
 
 import java.io.IOException;
@@ -16,12 +12,14 @@ import ua.epam.entitydao.*;
 import ua.epam.servlet.filter.UMConstants;
 
 /**
+ * Model class for add request to DB
  *
  * @author Ivanov Alexander
  */
 public class RequestAdd {
 
     /**
+     * Add to MySQL
      *
      * @param request
      * @param response
@@ -41,7 +39,6 @@ public class RequestAdd {
         HttpSession session = request.getSession(true);
         String usr = (String) session.getAttribute(UMConstants.PRINCIPAL);
 
-
         UserDAO user = daof.getUserDAO();
         User _usr = user.getUser(usr);//
 
@@ -56,24 +53,25 @@ public class RequestAdd {
                 request.getRequestDispatcher("./WelcomePage.jsp").forward(request, response);
             } catch (ServletException ex) {
                 System.out.println(ex.getMessage());
-            } catch (IOException ex){
+            } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
         }
     }
-    
+
     /**
+     * Redirect back without add data to DB
      *
      * @param request
      * @param response
      */
-    public static void goToHomePage(HttpServletRequest request, HttpServletResponse response){
+    public static void goToHomePage(HttpServletRequest request, HttpServletResponse response) {
         try {
-                request.getRequestDispatcher("./WelcomePage.jsp").forward(request, response);
-            } catch (ServletException ex) {
-                System.out.println(ex.getMessage());
-            } catch (IOException ex){
-                System.out.println(ex.getMessage());
-            }
+            request.getRequestDispatcher("./WelcomePage.jsp").forward(request, response);
+        } catch (ServletException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.epam.servletcontroller;
 
 import java.io.IOException;
@@ -14,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import ua.epam.model.WorkPlanAdd;
 
 /**
+ * Controller for add data to DB
  *
  * @author Alexandr Ivanov
  */
@@ -79,10 +76,10 @@ public class Process extends HttpServlet {
             throws ServletException, IOException {
         String denied = request.getParameter("denied");
         String process = request.getParameter("process");
-        int idReq =(Integer) request.getSession().getAttribute("idRequest");
-        
+        int idReq = (Integer) request.getSession().getAttribute("idRequest");
+
         if (idReq != -1) {
-            
+
             if (process != null) {
                 WorkPlanAdd.addWorkPlanRow(request, response, idReq);
             }

@@ -1,7 +1,8 @@
 package ua.epam.entity;
 
 /**
- *
+ * This entity for tenant
+ * 
  * @author Ivanov Alexander
  */
 public class User {
@@ -12,10 +13,21 @@ public class User {
     private Address address;
     private Access loggin;
     
-    public User(){
-        
+    /**
+     * Construct empty tenant
+     */
+    public User(){ 
     }
 
+    /**
+     * Construct tenant with parameters
+     * 
+     * @param idUser - id in DB
+     * @param firstName - first name
+     * @param lastName - last name
+     * @param address - address
+     * @param loggin - login for access
+     */
     public User(int idUser, String firstName, String lastName, Address address, Access loggin) {
         this.idUser = idUser;
         this.firstName = firstName;

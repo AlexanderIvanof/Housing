@@ -4,7 +4,8 @@ import java.util.List;
 import ua.epam.entity.*;
 
 /**
- *
+ * DAO to tenant
+ * 
  * @author Alexandr Ivanov
  */
 public interface UserDAO {

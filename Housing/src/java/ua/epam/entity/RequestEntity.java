@@ -1,13 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.epam.entity;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
+ * Entity for request from tenant to Housing
  *
  * @author Ivanov Alexander
  */
@@ -20,9 +17,20 @@ public class RequestEntity {
     private User user;
     private Approve approve;
 
+    /**
+     * Construct empty request
+     */
     public RequestEntity() {
     }
 
+    /**
+     * Construct new request with parameters
+     *
+     * @param requestDate - date of request
+     * @param typeWork - type work that do
+     * @param orderFullfillment - day of the work performance
+     * @param user - from what tenant
+     */
     public RequestEntity(GregorianCalendar requestDate, WorkType typeWork, GregorianCalendar orderFullfillment, User user) {
         this.idRequest = 0;
         this.requestDate = requestDate;
@@ -102,16 +110,15 @@ public class RequestEntity {
         this.user = user;
     }
 
+    /**
+     * Static method that return date in YYYY-MM-DD
+     *
+     * @param gcal - calendar date
+     * @return date in YYYY-MM-DD
+     */
     public static String showDate(GregorianCalendar gcal) {
         return " [" + gcal.get(Calendar.YEAR) + "/" + (gcal.get(Calendar.MONTH) + 1)
                 + "/" + gcal.get(Calendar.DAY_OF_MONTH) + "] ";
-    }
-
-    @Override
-    public String toString() {
-        return "Request id = " + idRequest + " request date:" + showDate(requestDate)
-                + "<br> --> " + user + "<br> --> |" + typeWork + "| -- |"
-                + showDate(orderFullfillment) + "|; ";
     }
 
     /**
@@ -126,5 +133,12 @@ public class RequestEntity {
      */
     public void setApprove(Approve approve) {
         this.approve = approve;
+    }
+
+    @Override
+    public String toString() {
+        return "Request id = " + idRequest + " request date:" + showDate(requestDate)
+                + "<br> --> " + user + "<br> --> |" + typeWork + "| -- |"
+                + showDate(orderFullfillment) + "|; ";
     }
 }

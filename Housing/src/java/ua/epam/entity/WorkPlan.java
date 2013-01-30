@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ua.epam.entity;
 
 import java.util.GregorianCalendar;
 
 /**
+ * Entity for Works Plan
  *
  * @author Ivanov Alexander
  */
@@ -19,10 +19,22 @@ public class WorkPlan {
     private Address address;
     private GregorianCalendar planDate;
 
+    /**
+     * Construct an empty works plan
+     */
     public WorkPlan() {
         idPlan = 0;
     }
 
+    /**
+     * Construct plan with parameter
+     *
+     * @param idPlan - Id
+     * @param foreman - Responsible for executing
+     * @param worker - Who perform work
+     * @param address - Address
+     * @param planDate - Execution date
+     */
     public WorkPlan(int idPlan, Worker foreman, Worker worker, Address address, GregorianCalendar planDate) {
         this.idPlan = idPlan;
         this.foreman = foreman;
@@ -100,6 +112,4 @@ public class WorkPlan {
     public void setPlanDate(GregorianCalendar planDate) {
         this.planDate = planDate;
     }
-    
-    
 }

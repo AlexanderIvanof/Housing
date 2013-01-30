@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.epam.servletcontroller;
 
 import java.io.IOException;
@@ -17,6 +13,7 @@ import ua.epam.entity.UserType;
 import ua.epam.servlet.filter.UMConstants;
 
 /**
+ * Controller for language change
  *
  * @author Alexandr Ivanov
  */

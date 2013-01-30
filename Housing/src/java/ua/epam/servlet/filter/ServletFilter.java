@@ -10,6 +10,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Filter add rows to standart server logger
+ *
+ * @author Alexandr Ivanov
+ */
 public class ServletFilter implements Filter {
 
     @Override

@@ -13,25 +13,28 @@ import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 
+/**
+ * Add rows to logger
+ *
+ * @author Alexandr Ivanov
+ */
 public class LoggingFilter implements Filter {
-    
+
     public final static String LOGFILE = "./logs/log4j.log";
     Logger logger;
-    
-    public LoggingFilter() throws IOException{
-       logger = Logger.getLogger(LoggingFilter.class);
-       logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
+
+    public LoggingFilter() throws IOException {
+        logger = Logger.getLogger(LoggingFilter.class);
+        logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
     }
-    
-    
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        
+
         Date inDate = new Date(System.currentTimeMillis());
         logger.info("Time: " + inDate);
         HttpServletRequest request = (HttpServletRequest) req;
-        
+
         //Get the IP address of client machine.
         String ipAddress = request.getRemoteAddr();
         String localAddr = request.getLocalAddr();

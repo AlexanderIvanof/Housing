@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ua.epam.entity;
 
 /**
+ * Entity for proffesion of worker
  *
  * @author Ivanov Alexander
  */
@@ -13,10 +9,17 @@ public class Profession {
 
     private String nameprof;
 
+    /**
+     * Construct empty profession
+     */
     public Profession() {
     }
 
-    
+    /**
+     * Construct profession with name
+     *
+     * @param nameprof - name of profession
+     */
     public Profession(String nameprof) {
         this.nameprof = nameprof;
     }
@@ -34,10 +37,9 @@ public class Profession {
     public void setNameprof(String nameprof) {
         this.nameprof = nameprof;
     }
-    
+
     @Override
-    public String toString(){
-      return nameprof;  
+    public String toString() {
+        return nameprof;
     }
-    
 }

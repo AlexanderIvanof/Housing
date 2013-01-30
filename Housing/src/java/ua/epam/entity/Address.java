@@ -1,8 +1,8 @@
 package ua.epam.entity;
 
 /**
- * Entity for DAO Address
- * 
+ * Entity for Address
+ *
  * @author Ivanov Alexander
  */
 public class Address {
@@ -11,15 +11,25 @@ public class Address {
     private String street;
     private String building;
     private String flat;
-    
-    public Address(){
+
+    /**
+     * Construct empty Address
+     */
+    public Address() {
     }
 
+    /**
+     * Construct Address with parameters
+     *
+     * @param street - Street name
+     * @param building - House number
+     * @param flat - Flat number
+     */
     public Address(String street, String building, String flat) {
         this.street = street;
         this.building = building;
         this.flat = flat;
-        idAddress  = -1;
+        idAddress = -1;
     }
 
     /**
@@ -63,10 +73,10 @@ public class Address {
     public void setFlat(String flat) {
         this.flat = flat;
     }
-    
+
     @Override
-    public String toString(){
-        return "ул. " + street +" / д." + building + " / кв." + flat;
+    public String toString() {
+        return "ул. " + street + " / д." + building + " / кв." + flat;
     }
 
     /**

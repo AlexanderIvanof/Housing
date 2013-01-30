@@ -18,18 +18,20 @@ import org.apache.log4j.SimpleLayout;
 import ua.epam.entity.*;
 
 /**
+ * DAO for proffesion
  *
  * @author Ivanov Alexander
  */
 public class MySQLProfessionDAO implements ProfessionDAO {
 
     private Connection accessConn;
-    
     private static Logger logger = Logger.getLogger(MySQLProfessionDAO.class);
-    
-     public final static String LOGFILE = "./logs/log4j.log";
+    public final static String LOGFILE = "./logs/log4j.log";
 
-    public MySQLProfessionDAO(){
+    /**
+     * Construct an empty profession DAO. Also create loggining for log4j
+     */
+    public MySQLProfessionDAO() {
         super();
         try {
             logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
@@ -40,21 +42,18 @@ public class MySQLProfessionDAO implements ProfessionDAO {
         Date inDate = new Date(System.currentTimeMillis());
         logger.info("Time: " + inDate);
     }
-    
+
     @Override
     public Profession getProfession(int idprofession) {
-        logger.info("MySQLProfessionDAO detting profession by id: "  + idprofession );
+        logger.info("MySQLProfessionDAO detting profession by id: " + idprofession);
         Profession myNew = new Profession();
         Statement statement = null;
         try {
             accessConn = MySQLDAOFactory.createConnection();
             statement = accessConn.createStatement();
-
             ResultSet result = statement.executeQuery("Select * from profession where idprofession = " + idprofession);
             result.next();
-
             myNew.setNameprof(result.getString("nameprof"));
-
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -79,23 +78,15 @@ public class MySQLProfessionDAO implements ProfessionDAO {
         int generKey = 0;
         Statement statement = null;
         try {
-
             PreparedStatement query = accessConn.prepareStatement("Insert into profession (nameprof) values (?)", Statement.RETURN_GENERATED_KEYS);
-
-
             query.setString(1, prof.getNameprof());
-
             query.executeUpdate();
-
             ResultSet rs = query.getGeneratedKeys();
-
             if (rs.next()) {
                 generKey = rs.getInt(1);
             }
             rs.close();
             query.close();
-
-
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             logger.error(ex.getMessage());

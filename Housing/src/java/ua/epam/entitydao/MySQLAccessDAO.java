@@ -17,18 +17,20 @@ import ua.epam.entity.Access;
 import ua.epam.entity.UserType;
 
 /**
+ * DAO Access for MySQL
  *
  * @author Ivanov Alexander
  */
 public class MySQLAccessDAO implements AccessDAO {
 
     private Connection accessConn;
-    
     public final static String LOGFILE = "./logs/log4j.log";
-    
     private static Logger logger = Logger.getLogger(MySQLAccessDAO.class);
-           
-    public MySQLAccessDAO(){
+
+    /**
+     * Construct an empty access DAO. Also create loggining for log4j
+     */
+    public MySQLAccessDAO() {
         super();
         try {
             logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
@@ -38,7 +40,7 @@ public class MySQLAccessDAO implements AccessDAO {
         logger.info("MysqlAccessDAO init ..........");
         Date inDate = new Date(System.currentTimeMillis());
         logger.info("Time: " + inDate);
-        
+
     }
 
     @Override
@@ -207,7 +209,7 @@ public class MySQLAccessDAO implements AccessDAO {
                         type);
                 _acc.setIdAccess(result.getInt("idaccess"));
                 allLoggins.add(_acc);
-                
+
             }
             result.close();
         } catch (SQLException ex) {

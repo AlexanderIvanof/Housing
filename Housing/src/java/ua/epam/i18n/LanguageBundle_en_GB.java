@@ -3,7 +3,8 @@ package ua.epam.i18n;
 import java.util.ListResourceBundle;
 
 /**
- *
+ * Language bundle for en_GB
+ * 
  * @author Ivanov Alexander
  */
 public class LanguageBundle_en_GB extends ListResourceBundle {

@@ -15,6 +15,7 @@ import javax.naming.NamingException;
 import ua.epam.entity.*;
 
 /**
+ * DAO for tenant
  *
  * @author Ivanov Alexander
  */
@@ -34,22 +35,17 @@ public class MySQLUserDAO implements UserDAO {
 
             accessConn = MySQLDAOFactory.createConnection();
             PreparedStatement query = accessConn.prepareStatement("Insert into users (first_name, last_name, address, authorization) values (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-
-
             query.setString(1, _new.getFirstName());
             query.setString(2, _new.getLastName());
             query.setInt(3, _addr);
             query.setInt(4, _acs);
-
             query.executeUpdate();
-
             ResultSet rs = query.getGeneratedKeys();
             if (rs.next()) {
                 generKey = rs.getInt(1);
             }
             rs.close();
             query.close();
-
         } catch (SQLException ex) {
             System.out.print(ex.getMessage());
         } catch (NamingException ex) {
@@ -59,6 +55,7 @@ public class MySQLUserDAO implements UserDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -106,6 +103,7 @@ public class MySQLUserDAO implements UserDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -152,6 +150,7 @@ public class MySQLUserDAO implements UserDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -196,6 +195,7 @@ public class MySQLUserDAO implements UserDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -240,6 +240,7 @@ public class MySQLUserDAO implements UserDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }

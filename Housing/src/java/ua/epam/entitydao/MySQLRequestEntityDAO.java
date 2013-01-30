@@ -17,6 +17,7 @@ import javax.naming.NamingException;
 import ua.epam.entity.*;
 
 /**
+ * DAO for request
  *
  * @author Ivanov Alexander
  */
@@ -36,7 +37,7 @@ public class MySQLRequestEntityDAO implements RequestEntityDAO {
             while (result.next()) {
                 RequestEntity myReq = new RequestEntity();
                 myReq.setIdRequest(result.getInt("idrequest"));
-                
+
                 Date requestDate = result.getDate("request_date");
                 Date orderDate = result.getDate("order_fulfillment");
                 int wrkType = result.getInt("work_type");
@@ -208,7 +209,7 @@ public class MySQLRequestEntityDAO implements RequestEntityDAO {
 
             ResultSet result = statement.executeQuery("Select * from request where idrequest = " + idrequest);
             result.next();
-            
+
             myNew.setIdRequest(result.getInt("idrequest"));
 
             Date requestDate = result.getDate("request_date");

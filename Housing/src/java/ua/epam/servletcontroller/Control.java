@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ua.epam.servletcontroller;
 
 import java.io.IOException;
@@ -14,35 +13,41 @@ import javax.servlet.http.HttpServletResponse;
 import ua.epam.model.RequestAdd;
 
 /**
+ * Controller for add request to DB
  *
  * @author Alexandr Ivanov
  */
-@WebServlet(name="Control", urlPatterns={"/Control"})
+@WebServlet(name = "Control", urlPatterns = {"/Control"})
 public class Control extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         String createCommand = request.getParameter("create");
-            if(createCommand != null){
-                RequestAdd.addToMySQL(request, response);
-            }
-            String backCommand = request.getParameter("back");
-            if(backCommand != null){
-                RequestAdd.goToHomePage(request, response);
-            }
-    } 
+        String createCommand = request.getParameter("create");
+        if (createCommand != null) {
+            RequestAdd.addToMySQL(request, response);
+        }
+        String backCommand = request.getParameter("back");
+        if (backCommand != null) {
+            RequestAdd.goToHomePage(request, response);
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
+    /**
+     * Handles the HTTP
+     * <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -50,12 +55,14 @@ public class Control extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
+    /**
+     * Handles the HTTP
+     * <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -63,17 +70,17 @@ public class Control extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

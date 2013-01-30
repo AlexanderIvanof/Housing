@@ -4,6 +4,7 @@ import java.util.List;
 import ua.epam.entity.*;
 
 /**
+ * DAO for worker
  *
  * @author Alexandr Ivanov
  */
@@ -18,6 +19,6 @@ public interface WorkerDAO {
     List<Worker> getAllWorkers();
 
     List<Worker> getWorkerByProfession(Profession prof);
-    
+
     void setWorkerBusy(int idworker, boolean busy);
 }

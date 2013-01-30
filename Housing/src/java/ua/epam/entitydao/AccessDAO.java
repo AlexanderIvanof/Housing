@@ -4,7 +4,8 @@ import java.util.List;
 import ua.epam.entity.*;
 
 /**
- *
+ * DAO Access
+ * 
  * @author Alexandr Ivanov
  */
 public interface AccessDAO {

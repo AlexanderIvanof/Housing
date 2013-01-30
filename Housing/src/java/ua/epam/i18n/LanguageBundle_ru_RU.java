@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ua.epam.i18n;
 
 import java.util.ListResourceBundle;
 
 /**
- *
+ * Language bundle for ru_RU
+ * 
  * @author Ivanov Alexander
  */
 public class LanguageBundle_ru_RU extends ListResourceBundle{

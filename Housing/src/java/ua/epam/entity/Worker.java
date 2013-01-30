@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ua.epam.entity;
 
 /**
+ * Entity for worker
  *
  * @author Ivanov Alexander
  */
@@ -17,9 +13,20 @@ public class Worker {
     private Profession prof;
     private boolean busy;
 
+    /**
+     * Construct on empty worker
+     */
     public Worker() {
     }
 
+    /**
+     * Construct worker with parameters
+     *
+     * @param idworker - id from DB
+     * @param firstName -first name
+     * @param lastName-last name
+     * @param prof - profession
+     */
     public Worker(int idworker, String firstName, String lastName, Profession prof) {
         this.idworker = idworker;
         this.firstName = firstName;
@@ -97,10 +104,10 @@ public class Worker {
     public void setBusy(boolean busy) {
         this.busy = busy;
     }
-    
+
     @Override
-    public String toString(){
-        return "id = " +idworker + ": " +firstName + " " +lastName +
-                " PROF: " + prof + "|";
+    public String toString() {
+        return "id = " + idworker + ": " + firstName + " " + lastName
+                + " PROF: " + prof + "|";
     }
 }

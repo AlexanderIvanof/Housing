@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ua.epam.entitydao;
 
 import java.sql.Connection;
@@ -13,13 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
 import ua.epam.entity.*;
+
 /**
+ * DAO for Type of work
  *
  * @author Ivanov Alexander
  */
 public class MySQLWorkTypeDAO implements WorkTypeDAO {
 
     private Connection accessConn;
+
     @Override
     public WorkType getWorkType(int idWorkType) {
         WorkType myNew = new WorkType();
@@ -32,9 +30,7 @@ public class MySQLWorkTypeDAO implements WorkTypeDAO {
             myNew.setIdWorkType(result.getInt("idworktype"));
             myNew.setName(result.getString("name"));
             MySQLProfessionDAO prof = new MySQLProfessionDAO();
-            
             myNew.setWhoDo(prof.getProfession(result.getInt("worker")));
-
             result.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -45,6 +41,7 @@ public class MySQLWorkTypeDAO implements WorkTypeDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
@@ -62,7 +59,7 @@ public class MySQLWorkTypeDAO implements WorkTypeDAO {
             while (result.next()) {
                 MySQLProfessionDAO prof = new MySQLProfessionDAO();
                 Profession skil = prof.getProfession(result.getInt("worker"));
-                
+
                 allLoggins.add(new WorkType(result.getInt("idworktype"),
                         result.getString("name"),
                         skil));
@@ -77,12 +74,11 @@ public class MySQLWorkTypeDAO implements WorkTypeDAO {
                 try {
                     accessConn.close();
                 } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
                 }
             }
         }
 
         return allLoggins;
     }
-
-
 }

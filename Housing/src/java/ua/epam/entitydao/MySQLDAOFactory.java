@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ua.epam.entitydao;
 
 import java.sql.*;
@@ -11,25 +6,32 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
+ * Rialization DAOFactory for MySQL
  *
  * @author Ivanov Alexander
  */
 class MySQLDAOFactory extends DAOFactory {
 
-   
     public static final String DBURL = "jdbc:mysql://localhost:3306/housing";
-    
-    public static Connection createConnection() throws SQLException, NamingException{
+
+    /**
+     * Create pool connection to MySQL
+     *
+     * @return connection
+     * @throws SQLException - if can't connect to DB
+     * @throws NamingException - if pool not create
+     */
+    public static Connection createConnection() throws SQLException, NamingException {
         // get pool connection to MySQL DB
         Connection con = null;
-        
+
         InitialContext context = new InitialContext();
         DataSource mydata = (DataSource) context.lookup("jdbc/MySqlPool");
-       // DriverManager.getConnection(DBURL, "root", "040385");
-        if(mydata != null){
+
+        if (mydata != null) {
             con = mydata.getConnection();
         } else {
-            throw new RuntimeException(">>>>>>>>>>>Not opn");
+            throw new RuntimeException("Has no connection");
         }
         return con;
     }
@@ -78,5 +80,4 @@ class MySQLDAOFactory extends DAOFactory {
     public WorkPlanDAO getWorkPlanDAO() {
         return new MySQLWorkPlanDAO();
     }
-
 }
