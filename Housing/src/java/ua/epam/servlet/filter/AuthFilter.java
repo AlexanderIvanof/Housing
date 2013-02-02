@@ -16,7 +16,7 @@ import ua.epam.entity.*;
 import ua.epam.entitydao.*;
 
 /**
- * This filter get access to start page.
+ * This filter get access to start page and open session.
  *
  * @author Alexandr Ivanov
  */

@@ -14,7 +14,7 @@ import java.util.Date;
 import javax.naming.NamingException;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
+import org.apache.log4j.PatternLayout;
 import ua.epam.entity.*;
 
 /**
@@ -34,7 +34,7 @@ public class MySQLProfessionDAO implements ProfessionDAO {
     public MySQLProfessionDAO() {
         super();
         try {
-            logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
+            logger.addAppender(new FileAppender(new PatternLayout("%p %d{HH:mm:ss}: %m"), LOGFILE, false));
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }

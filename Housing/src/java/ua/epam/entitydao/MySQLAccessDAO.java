@@ -12,7 +12,7 @@ import java.util.List;
 import javax.naming.NamingException;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
-import org.apache.log4j.SimpleLayout;
+import org.apache.log4j.PatternLayout;
 import ua.epam.entity.Access;
 import ua.epam.entity.UserType;
 
@@ -33,7 +33,7 @@ public class MySQLAccessDAO implements AccessDAO {
     public MySQLAccessDAO() {
         super();
         try {
-            logger.addAppender(new FileAppender(new SimpleLayout(), LOGFILE, false));
+            logger.addAppender(new FileAppender(new PatternLayout("%p %d{HH:mm:ss}: %m"), LOGFILE, false));
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }

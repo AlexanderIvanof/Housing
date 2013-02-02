@@ -107,7 +107,7 @@ public class Worker {
 
     @Override
     public String toString() {
-        return "id = " + idworker + ": " + firstName + " " + lastName
-                + " PROF: " + prof + "|";
+        return firstName + " " + lastName
+                + " PROF: " + prof;
     }
 }
